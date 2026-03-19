@@ -4,8 +4,7 @@ dewcription: Progressive Web Apps with service workers, web manifest, offline su
 ---
 
 ## Progressive Web Apps (PWA)
-
-**Progressive Web Apps (PWA)** are web applications that use modern web capabilities to deliver an app-like experience to users. They combine the reach of the web with the features of native apps, such as offline support, push notifications, and installability.
+Applications that use modern web capabilities to deliver an app-like experience to users. They combine the reach of the web with the features of native apps, such as offline support, push notifications, and installability.
 
 ## Key Features
 

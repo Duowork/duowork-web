@@ -1,5 +1,6 @@
 ---
-import ClientRouter from "astro/components/ClientRouter.astro";
+// import ClientRouter from "astro/components/ClientRouter.astro";
+import { ClientRouter } from "astro:transitions";
 
 const {
   siteName = "Duowork Software Solutions",
@@ -18,6 +19,15 @@ const {
     {title ? `Duowork | ${title}` : title}
   </title>
   <link rel="icon" href="/favicon.ico" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#9eff51" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Duowork" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
 
   <!-- Client router for SPA-like navigation -->
   <ClientRouter />
@@ -48,4 +58,16 @@ const {
 
   <!-- Astro default-->
   <meta name="generator" content={Astro.generator} />
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .then((reg) => console.log("[SW] Registered:", reg.scope))
+          .catch((err) => console.warn("[SW] Registration failed:", err));
+      });
+    }
+  </script>
 </head>
