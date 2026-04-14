@@ -1,0 +1,42 @@
+[
+  {
+    "title": " <span class=\"custom-underline-green-accent\">Disc</span>overy & Scope",
+    "image": {
+      "srcName": "discoveryImage",
+      "alt": "Discovery process icon",
+      "width": 40,
+      "height": 40
+    },
+    "description": "We believe in near-perfection but only when we understand what you the goal is. Here we gather information on the solution you want to solve, business requirement you want to meet and the processes you want automated. This allow us to build within the right confinement."
+  },
+  {
+    "title": " <span class=\"custom-underline-green-accent\">Des</span>ign & Prototype",
+    "image": {
+      "srcName": "prototypeImage",
+      "alt": "Design and prototype process icon",
+      "width": 40,
+      "height": 40
+    },
+    "description": "We bring over the knowledge gained from the scope and discovery phase and create early designs and/or then the Minimum Viable Product (MVP) to test the vision idea."
+  },
+  {
+    "title": " <span class=\"custom-underline-green-accent\">Pro</span>ject Development",
+    "image": {
+      "srcName": "developmentImage",
+      "alt": "Project development process icon",
+      "width": 40,
+      "height": 40
+    },
+    "description": "In the development phase, we run a full cycle development intended to implement the full solution and requirements. We build and test so the project is as solid as possible to go live."
+  },
+  {
+    "title": "<span class=\"custom-underline-green-accent\">lau</span>nch, Training & Maintenance </strong>",
+    "image": {
+      "srcName": "launchImage",
+      "alt": "Training & maintenance process icon",
+      "width": 40,
+      "height": 40
+    },
+    "description": "This is where the solution is ready to go live. We launch the project and conduct an onboarding training for staff. We provide support and are always available for future project modifications"
+  }
+]

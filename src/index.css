@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-title: "IBM Plex Sans Condensed", sans-serif;
+  --font-body: "Poppins", sans-serif;
+
+  --color-duo-green-50: #def2bf;
+  --color-duo-green-200: #9eff51;
+  --color-duo-green-400: #8cbf40;
+  --color-duo-green-600: #3ea645;
+  --color-duo-green-900: #03734b;
+  --color-duo-dark: #222222;
+  --color-duo-grey: #939498;
+}
+
+/* General styles for tags in pages/components */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+
+p,
+div,
+a,
+span,
+button,
+label,
+b,
+em,
+i,
+strong {
+  font-family: var(--font-body);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-text-dark {
+  color: var(--color-duo-dark);
+}
+
+.text-secondary {
+  color: var(--color-duo-dark);
+}
+
+.custom-underline-green-accent {
+  border-width: 3px;
+  border-color: var(--color-duo-green-200);
+}
+
+.underline-color-accent {
+  border-width: 3px;
+  border-color: var(--color-duo-green-200);
+}
+
+.custom-bg-green-accent {
+  background-color: var(--color-duo-green-200);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.bg-color-accent {
+  background-color: var(--color-duo-green-200);
+}
+
+.custom-text-green-accent {
+  background-color: var(--color-duo-green-200);
+}
+
+.text-color-accent {
+  color: var(--color-duo-green-200);
+}
+
+.custom-bg-dark {
+  background-color: var(--color-duo-dark);
+}
+
+.text-color-secondary {
+  color: var(--color-duo-dark);
+}
+
+.bg-color-secondary {
+  background-color: var(--color-duo-dark);
+}
+
+.cta-btn {
+  height: 50px;
+  background-color: var(--color-duo-green-200);
+  border-radius: 0.75rem;
+}
+
+.cta-btn.nav-contact-cta {
+  width: 10rem;
+  background-color: var(--color-duo-green-200);
+  color: var(--color-duo-dark);
+}
+
+.cta-btn.intro-cta-btn {
+  width: 250px;
+}
+
+.cta-btn.services-request-cta {
+  width: 200px;
+  height: 40px !important;
+  background-color: white !important;
+}
+
+.cta-btn.service-contact-cta {
+  width: 200px;
+  height: 40px;
+  border-radius: 5px !important;
+}
+
+/* Loader */
+.loader {
+  width: 40px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+}
+
+.loader::after,
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: animloader 2s linear infinite;
+}
+
+.loader::after {
+  animation-delay: 1s;
+}
+
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.section-heading .section-tag {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-duo-dark);
+  margin-bottom: 1.25rem;
+}
+
+.section-heading .section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.125rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.section-heading .section-title .service-title__highlight {
+  background-color: var(--color-duo-green-200);
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+  font-family: var(--font-title);
+}
+
+.section-heading .section-description {
+  text-align: center;
+  line-height: 1.375;
+  max-width: 35rem;
+  font-size: small;
+  font-weight: 300;
+  margin-top: 1.25rem;
+  margin-bottom: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-body);
+}

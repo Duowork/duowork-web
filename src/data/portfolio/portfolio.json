@@ -1,0 +1,116 @@
+[
+  {
+    "id": 100,
+    "name": "Ecomspy",
+    "description": "Ecommerce growth and marketing trends suites",
+    "tag": "e-commerce trends insight",
+    "link": "https://goecomspy.com",
+    "category": "live-project",
+    "image": {
+      "srcName": "ecomspyLive",
+      "alt": "Duowork portfolio - Ecomspy"
+    }
+  },
+  {
+    "id": 101,
+    "name": "AVATAMedia",
+    "description": "Marketing and PR agency",
+    "tag": "marketing-agency landing-page",
+    "link": "https://avatamedia.org",
+    "category": "live-project",
+    "image": {
+      "srcName": "avataLive",
+      "alt": "Duowork portfolio - AVATAMedia"
+    }
+  },
+  {
+    "id": 103,
+    "name": "Aerave",
+    "description": "Ticketing web app to explore live events and buy tickets online.",
+    "tag": "Ticketing web app",
+    "link": "https://aerave.app",
+    "category": "live-project",
+    "image": {
+      "srcName": "aeraveLive",
+      "alt": "Aerave international website image"
+    }
+  },
+  {
+    "id": 104,
+    "name": "Gobeacon International",
+    "description": "Real estate marketing website integrated with Contentful CMS.",
+    "tag": "Headless CMS web app",
+    "link": "https://gobeaconinternational.com",
+    "category": "live-project",
+    "image": {
+      "srcName": "gobeaconImage",
+      "alt": "Gobeacon international website image"
+    }
+  },
+  {
+    "id": 105,
+    "name": "Galaxy Hub",
+    "description": "Galaxy Hub online shop",
+    "tag": "ui-design online-shop user-experience",
+    "category": "ui-project",
+    "image": {
+      "srcName": "techLaunch",
+      "alt": "Duowork portfolio - UI Design"
+    }
+  },
+  {
+    "id": 106,
+    "name": "AI Revolution",
+    "description": "AI Revolution",
+    "tag": "ui-design online-shop AI",
+    "category": "ui-project",
+    "image": {
+      "srcName": "aiRevolution2",
+      "alt": "Duowork portfolio - UI Design"
+    }
+  },
+  {
+    "id": 107,
+    "name": "Allure E-commerce",
+    "description": "Allure E-commerce",
+    "tag": "ui-design online-shop E-commerce",
+    "category": "ui-project",
+    "image": {
+      "srcName": "allure",
+      "alt": "Duowork portfolio - UI Design"
+    }
+  },
+  {
+    "id": 108,
+    "name": "Allure E-commerce",
+    "description": "Allure E-commerce",
+    "tag": "ui-design online-shop E-commerce",
+    "category": "ui-project",
+    "image": {
+      "srcName": "allure2",
+      "alt": "Duowork portfolio - UI Design"
+    }
+  },
+  {
+    "id": 108,
+    "name": "NFT Marketplace",
+    "description": "NFT Marketplace",
+    "tag": "ui-design online-shop Web3",
+    "category": "ui-project",
+    "image": {
+      "srcName": "NftApp",
+      "alt": "Duowork portfolio - UI Design"
+    }
+  },
+  {
+    "id": 109,
+    "name": "ConnecT",
+    "description": "Social media app",
+    "tag": "ui-design online-shop social-app",
+    "category": "ui-project",
+    "image": {
+      "srcName": "socialApp",
+      "alt": "Duowork portfolio - UI Design"
+    }
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "title": "<span class=\"underline-green-accent\">UI/UX</span> Design",
+    "description": "We develop designs that encapsulate business idea and requirement through procedural designs for optimized interfacing and overall user experience.",
+    "image": {
+      "srcName": "uIUxIcon",
+      "alt": "UI/UX Design",
+      "width": 40,
+      "height": 40
+    }
+  },
+  {
+    "title": "<span class=\"underline-green-accent\">Mobile</span> development",
+    "description": "We offer mobile app development solutions for business looking to boost their operation and reach more customers. using top tech solutions, we create tailored solutions that help you reach you goals.",
+    "image": {
+      "srcName": "mobilDevIcon",
+      "alt": "Mobile development",
+      "width": 40,
+      "height": 40
+    }
+  },
+  {
+    "title": "SEO <span class='underline-green-accent'>Integration</span>",
+    "description": "Put your online presence on the top list of online searches in your industry and niche. Through SEO, we make search engines understand your app and it's content in order to help target audience find your site.",
+    "image": {
+      "srcName": "seoIntegration",
+      "alt": "SEO Integration",
+      "width": 40,
+      "height": 40
+    }
+  },
+  {
+    "title": "<span class=\"underline-green-accent\">Front</span>-end development",
+    "description": "Secure, scalable and visually compelling front-end, back-end and full-stack development solution that is expressive of business requirements and reaching possible results of business operations.",
+    "image": {
+      "srcName": "feDevIcon",
+      "alt": "Mobile development",
+      "width": 40,
+      "height": 40
+    }
+  },
+  {
+    "title": "Google <span class='underline-green-accent'>Workspace Automation</span>",
+    "description": "Transform your team and internal business operation with Google Workspace automation. Simplify workflow, enhance collaboration, and optimize internal operations for maximum efficiency and growth.",
+    "image": {
+      "srcName": "googleAutomation",
+      "alt": "Google workspace development",
+      "width": 40,
+      "height": 40
+    }
+  },
+  {
+    "title": "<span class=\"underline-green-accent\">Back</span>-end API development",
+    "description": "We create powerful server-side applications. From database design and optimization to API development, we ensure your system runs efficiently and securely.",
+    "image": {
+      "srcName": "beDevIcon",
+      "alt": "Backend development",
+      "width": 40,
+      "height": 40
+    }
+  },
+  {
+    "title": "<span class=\"underline-green-accent\">Full</span>-stack development",
+    "description": "We bridge the gap between front-end and back-end with our Fullstack Development proficiency. We'll handle everything from crafting intuitive user interfaces to implementing robust server logic.",
+    "image": {
+      "srcName": "fsDevIcon",
+      "alt": "Full-stack development",
+      "width": 40,
+      "height": 40
+    }
+  }
+]

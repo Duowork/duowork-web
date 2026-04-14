@@ -1,0 +1,28 @@
+[
+    {
+      "firstName": "Jasmine",
+      "lastName": "Jade",
+      "fullName": "Jasmine Jade",
+      "email": "hello@thejasminejade.com",
+      "bio": "Jasmine is a freelance B2B writer scaling growth-stage startups and companies with audience-first SEO content and strategy.",
+      "imageUrl": "../assets/images/authors/jasmine.jpeg",
+      "profile": {
+        "website": "www.thejasminejade.com",
+        "twitter": "https://twitter.com/thejasminejade",
+        "linkedin": "https://www.linkedin.com/in/thejasminejade"
+      }
+    },
+    {
+      "firstName": "Romeo",
+      "lastName": "Peter",
+      "fullName": "Romeo Peter",
+      "email": "heyromeo@duowork.tech",
+      "bio": "Romeo is a freelance software developer helping businesses build and scale their digital ideas through tailor-made software solutions",
+      "imageUrl": "../assets/images/authors/romeo.jpg",
+      "profile": {
+        "website": "https://duowork.tech",
+        "twitter": "https://twitter.com/_romeopeter",
+        "linkedin": "https://www.linkedin.com/in/romeo-peter"
+      }
+    }
+  ]

@@ -1,0 +1,289 @@
+[
+  {
+    "category": "design",
+    "tools": [
+      {
+        "name": "figma",
+        "image": {
+          "srcName": "figmaImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Photoshop",
+        "image": {
+          "srcName": "photoshopImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Illustrator",
+        "image": {
+          "srcName": "illustratorImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  },
+  {
+    "category": "frontend",
+    "tools": [
+      {
+        "name": "ReactJS",
+        "image": {
+          "srcName": "reactJsImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "TypeScript",
+        "image": {
+          "srcName": "typescriptImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "NextJS",
+        "image": {
+          "srcName": "nextJsImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "GatsbyJS",
+        "image": {
+          "srcName": "gatsbyJsImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "AstroJS",
+        "image": {
+          "srcName": "astroJsImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  },
+  {
+    "category": "mobile",
+    "tools": [
+      {
+        "name": "React Native",
+        "image": {
+          "srcName": "reactNativeImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Flutter",
+        "image": {
+          "srcName": "flutterImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  },
+  {
+    "category": "desktop",
+    "tools": [
+      {
+        "name": "ElectronJS",
+        "image": {
+          "srcName": "electronJsImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  },
+  {
+    "category": "backend",
+    "tools": [
+      {
+        "name": "Django",
+        "image": {
+          "srcName": "djangoImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "ExpressJS",
+        "image": {
+          "srcName": "expressJsImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Wordpress",
+        "logo": "../assets/images/tools/wordpress.png",
+        "image": {
+          "srcName": "wordpressImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Sanity",
+        "logo": "../assets/images/tools/wordpress.png",
+        "image": {
+          "srcName": "sanityImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  },
+  {
+    "category": "Database",
+    "tools": [
+      {
+        "name": "MySQL",
+        "logo": "../assets/images/tools/mysql96.png",
+        "image": {
+          "srcName": "mySQLImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "PostgreSQL",
+        "logo": "../assets/images/tools/postgresql96.png",
+        "image": {
+          "srcName": "postgreSQLImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "MongoDB",
+        "logo": "../assets/images/tools/mongodb96.png",
+        "image": {
+          "srcName": "mongoDbImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "SQL Lite",
+        "logo": "../assets/images/tools/mongodb96.png",
+        "image": {
+          "srcName": "SqlLiteImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Airtable",
+        "logo": "../assets/images/tools/mongodb96.png",
+        "image": {
+          "srcName": "airtableImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  },
+  {
+    "category": "Cloud",
+    "tools": [
+      {
+        "name": "AWS",
+        "logo": "../assets/images/tools/aws96.png",
+        "image": {
+          "srcName": "awsImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Azure",
+        "logo": "../assets/images/tools/azure96.png",
+        "image": {
+          "srcName": "azureImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "GCP",
+        "logo": "../assets/images/tools/GCP96.png",
+        "image": {
+          "srcName": "GcpImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  },
+  {
+    "category": "DevOps",
+    "tools": [
+      {
+        "name": "GitHub Actions",
+        "logo": "../assets/images/tools/github96.png",
+        "image": {
+          "srcName": "githubImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Docker",
+        "logo": "../assets/images/tools/docker96.png",
+        "image": {
+          "srcName": "dockerImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "name": "Jenkins",
+        "logo": "../assets/images/tools/jenkins96.png",
+        "image": {
+          "srcName": "jenkinsImage",
+          "alt": "Duowork work tool",
+          "width": 40,
+          "height": 40
+        }
+      }
+    ]
+  }
+]
