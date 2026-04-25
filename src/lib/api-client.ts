@@ -1,6 +1,5 @@
 import Fetchfully, {
   type FetchfullyConfig,
-  type FetchfullyInstance,
 } from "fetchfully";
 
 /* ----------------------------------- */
