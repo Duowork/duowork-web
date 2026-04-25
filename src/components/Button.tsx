@@ -1,17 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type ButtonProps = {
-  value: string;
-  btnClass: string;
+  children: React.ReactNode;
+  className: string;
   isLink?: boolean;
   linkTo?: any;
   btnType?: "button" | "submit" | "reset";
   btnDisabled?: boolean;
-  btnClicked?: () => {};
+  btnClicked?: () => void;
 };
 
 export default function Button({
-  value,
+  children,
   isLink,
-  btnClass,
+  className,
   linkTo,
   btnType,
   btnDisabled = false,
@@ -19,8 +20,8 @@ export default function Button({
 }: ButtonProps) {
   if (!isLink) {
     return (
-      <button type={btnType} className={btnClass} disabled={btnDisabled}>
-        {value}
+      <button type={btnType} className={className} disabled={btnDisabled}>
+        {children}
       </button>
     );
   }
@@ -28,11 +29,11 @@ export default function Button({
   return (
     <button
       type={btnType}
-      className={btnClass}
+      className={className}
       disabled={btnDisabled}
       onClick={btnClicked}
     >
-      <a href={linkTo}>{value}</a>
+      <a href={linkTo}>{children}</a>
     </button>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -64,7 +65,7 @@ function ContactForm() {
       } else {
         throw Error(res.error?.message, { cause: res.error?.cause });
       }
-    } catch (error) {
+    } catch {
       setIsLoading(false);
       // console.error("Error:", error);
       toast.error("Failed to submit Email!", {
@@ -73,6 +74,8 @@ function ContactForm() {
         icon: false,
         role: "alert",
         style: {
+          color: "white",
+          border: "1px solid white",
           borderRadius: "6px",
           backgroundColor: "#222222",
         },

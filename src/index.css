@@ -94,7 +94,8 @@ body {
 .cta-btn {
   height: 50px;
   background-color: var(--color-duo-green-200);
-  border-radius: 0.75rem;
+  border-radius: 0.75rem; 
+  padding: 8px 16px 8px 16px;
 }
 
 .cta-btn.nav-contact-cta {
