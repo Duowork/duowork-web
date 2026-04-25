@@ -42,6 +42,16 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Duowork Software Solutions" />
 
+    <!-- GitHub Pages SPA routing: restore path from redirect -->
+    <script>
+      (function() {
+        var p = window.location.search.match(/[?&]p=([^&]*)/);
+        if (p) {
+          window.history.replaceState(null, null, decodeURIComponent(p[1]) + window.location.hash);
+        }
+      })();
+    </script>
+
     <!-- Service Worker Registration -->
     <script>
       if ("serviceWorker" in navigator) {
