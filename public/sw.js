@@ -4,7 +4,7 @@
  * Version bump this string to force cache refresh on deploy.
  */
 
-const CACHE_VERSION = "duowork-v1";
+const CACHE_VERSION = "duowork-v2";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 
