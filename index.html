@@ -7,7 +7,7 @@
     <title>Duowork</title>
 
     <!-- PWA -->
-    <!-- <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#9eff51" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -16,7 +16,7 @@
       content="black-translucent"
     />
     <meta name="apple-mobile-web-app-title" content="Duowork" />
-    <link rel="apple-touch-icon" href="/icon-192.png" /> -->
+    <link rel="apple-touch-icon" href="/icon-192.png" />
 
     <!-- Google Meta Tags -->
     <meta name="description" content="We help businesses automate and scale their business vision to the top." />
@@ -53,21 +53,16 @@
     </script>
 
     <!-- Service Worker Registration -->
-    <!-- <script>
+    <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.getRegistrations().then((registrations) => {
-            registrations.forEach((reg) => {
-              reg.update().catch(() => {});
-            });
-          });
           navigator.serviceWorker
             .register("/sw.js")
             .then((reg) => console.log("[SW] Registered:", reg.scope))
             .catch((err) => console.warn("[SW] Registration failed:", err));
         });
       }
-    </script> -->
+    </script>
   </head>
   <body>
     <div id="root"></div>
