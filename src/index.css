@@ -5,6 +5,8 @@
 @theme {
   --font-title: "IBM Plex Sans Condensed", sans-serif;
   --font-body: "Poppins", sans-serif;
+  --font-archivo: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-archivo-black: "Archivo Black", ui-sans-serif, system-ui, sans-serif;
 
   --color-duo-green-50: #def2bf;
   --color-duo-green-200: #9eff51;

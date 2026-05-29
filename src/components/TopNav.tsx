@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { Headphones, MoveUpRight } from 'lucide-react'
+import { Link } from "react-router-dom";
+import { Headphones, MoveUpRight, Briefcase } from "lucide-react";
 
 export default function TopNav() {
   return (
@@ -9,17 +9,22 @@ export default function TopNav() {
         <Link to="/" className="absolute top-0 left-0 size-full"></Link>
       </div>
 
-      <div className="flex items-center gap-2 sm:gap-4 text-white z-20">
-        <Link to="/contact" className="flex items-center gap-2">
+      <div className="flex items-center gap-3 sm:gap-4 text-white z-20">
+        <Link to="/contact" className="flex items-center gap-1">
           Contact
           <Headphones />
         </Link>
 
-        <Link to="/learn-more" className="flex items-center gap-2">
+        <Link to="/work" className="flex items-center gap-1">
+          Work
+          <Briefcase />
+        </Link>
+
+        <Link to="/learn-more" className="flex items-center gap-1">
           Learn more
           <MoveUpRight />
         </Link>
       </div>
     </nav>
-  )
+  );
 }
