@@ -1,67 +1,121 @@
 [
   {
-    "id": 103,
-    "name": "Aerave",
-    "description": "Ticketing web app to explore live events and buy tickets online.",
+    "id": "Aerave",
+    "title": "Aerave",
+    "cat": "product",
+    "catLabel": "Event ticketing",
+    "client": "Aerave Ltd",
+    "year": "2024",
+    "size": "h-l",
+    "cap": "Ticketing web app to explore live events, buy tickets and manage ticket sales",
     "tag": ["Ticketing", "web app"],
+    "role": "Product + Engineering",
+    "time": "14 Weeks",
+    "platform": "Web · iOS · Android",
+    "outcome": "Seamless Gate Control. Real-Time Sales Tracking",
     "link": "https://aerave.app",
-    "image": {
-      "srcName": "aeraveLive",
+    "img": {
+      "src": "/work/portfolio-3-aerave.png",
       "alt": "Duowork portfolio - Aerave"
     }
   },
   {
-    "id": 104,
-    "name": "Araafit",
-    "description": "AI-powered and mobile-first tailoring web app for custom clothing clothing recommendation based on skin tone",
+    "id": "Araafit",
+    "title": "Araafit",
+    "cat": "product",
+    "catLabel": "AI Automation",
+    "client": "Araafit Inc",
+    "year": "2026",
+    "size": "h-xl",
+    "cap": "AI-powered and mobile-first tailoring web app for custom clothing clothing recommendation based on skin tone",
     "tag": ["AI", "web app", "tailoring"],
+    "role": "Engineering",
+    "time": "Web + Mobile",
+    "platform": "Web · Mobile Responsive",
+    "outcome": "Automated matching and Recommendation",
     "link": "http://araafit.com",
-    "image": {
-      "srcName": "gobeaconImage",
+    "img": {
+      "src": "/work/portfolio-1-araafit.png",
       "alt": "Duowork portfolio - Araafit"
     }
   },
   {
-    "id": 100,
-    "name": "Ecomspy",
-    "description": "E-commerce online suite for market trends, track competitive ads, and market insights to help online sellers make informed decisions and optimize their strategies.",
+    "id": "ecomspy",
+    "title": "Ecomspy",
+    "cat": "web",
+    "catLabel": "E-commerce tool",
+    "client": "Ecomspy Ltd",
+    "year": "2024",
+    "size": "h-s",
+    "cap": "E-commerce online suite for market trends, track competitive ads, and market insights to help online sellers make informed decisions and optimize their strategies.",
     "tag": ["e-commerce", "web app", "marketing"],
+    "role": "Product + Engineering",
+    "time": "16 weeks",
+    "platform": "web",
+    "outcome": "Predictive Trend Identification and Insight",
     "link": "https://goecomspy.com",
-    "image": {
-      "srcName": "ecomspyLive",
+    "img": {
+      "src": "/work/portfolio-2-ecomspy.png",
       "alt": "Duowork portfolio - Ecomspy"
     }
   },
   {
-    "id": 100,
-    "name": "Sable & Grey Real Estate",
-    "description": "A bold and eccentric landing page cementing Sable & Grey real estate development and investment company online presence.",
+    "id": "sable&grey-real-estate",
+    "title": "Sable & Grey",
+    "cat": "web",
+    "catLabel": "Online Presence",
+    "client": "Sable & Grey Real Estate",
+    "year": "2025",
+    "size": "h-m",
+    "cap": "A bold and eccentric landing page cementing Sable & Grey real estate development and investment company online presence.",
     "tag": ["real estate", "landing page", "online presence", "SPA"],
-    "link": "https://goecomspy.com",
-    "image": {
-      "srcName": "ecomspyLive",
+    "role": "Web design",
+    "time": "2 weeks",
+    "link": "http://sableandgreyrealestate.com",
+    "platform": "Web · Mobile Responsive",
+    "outcome": "Memorable Brand Recall",
+    "img": {
+      "src": "/work/portfolio-4-sg.png",
       "alt": "Duowork portfolio - Ecomspy"
     }
   },
   {
-    "id": 101,
-    "name": "AVATAMedia",
-    "description": "AVATAMedia is a marketing and PR agency providing comprehensive services to help organizations, public figures and businesses build and maintain a strong online presence, enhance brand visibility, and effectively communicate with their target audience.",
+    "id": "avatamedia",
+    "title": "AVATAMedia",
+    "cat": "web",
+    "catLabel": "Online Presence",
+    "client": "Avata Media Ltd",
+    "year": "2025",
+    "size": "h-l",
+    "cap": "AVATAMedia is a marketing and PR agency providing comprehensive services to help organizations, public figures and businesses build and maintain a strong online presence, enhance brand visibility, and effectively communicate with their target audience.",
     "tag": ["marketing", "PR", "agency"],
-    "link": "https://avatamedia.org",
-    "image": {
-      "srcName": "avataLive",
+    "role": "Web design",
+    "time": "3 months",
+    "platform": "Web · Browser",
+    "outcome": "Service Clarity and Audience Reach",
+    "link": "http://avatamedia.org",
+    "img": {
+      "src": "/work/portfolio-5-avatamedia.png",
       "alt": "Duowork portfolio - AVATAMedia"
     }
   },
   {
-    "id": 104,
-    "name": "Fetchfully",
-    "description": "Powerful HTTP client for making and managing network requests with ease in the browser",
+    "id": "fetchfully",
+    "title": "Fetchfully",
+    "cat": "web",
+    "catLabel": "Developer tool",
+    "client": "Duowork Solutions Ltd",
+    "year": "2026",
+    "size": "h-w",
+    "cap": "Powerful HTTP client for making and managing network requests with ease in the browser",
     "tag": ["developer tool", "browser extension", "HTTP client"],
-    "link": "https://www.npmjs.com/package/fetchfully",
-    "image": {
-      "srcName": "fetchfullyLive",
+    "role": "Engineering",
+    "link": "https://www.npmjs.com/package/fetchfully.png",
+    "time": "3 months",
+    "platform": "Web · HTTP-client",
+    "outcome": "Accelerated Network Request Cycles",
+    "img": {
+      "src": "/work/portfolio-6-fetchfully.png",
       "alt": "Duowork portfolio - Fetchfully"
     }
   }
