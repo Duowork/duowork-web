@@ -15,7 +15,7 @@
     "outcome": "Seamless Gate Control. Real-Time Sales Tracking",
     "link": "https://aerave.app",
     "img": {
-      "src": "/work/portfolio-3-aerave.png",
+      "src": "/work/portfolio-3-aerave.webp",
       "alt": "Duowork portfolio - Aerave"
     }
   },
@@ -35,7 +35,7 @@
     "outcome": "Automated matching and Recommendation",
     "link": "http://araafit.com",
     "img": {
-      "src": "/work/portfolio-1-araafit.png",
+      "src": "/work/portfolio-1-araafit.webp",
       "alt": "Duowork portfolio - Araafit"
     }
   },
@@ -55,7 +55,7 @@
     "outcome": "Predictive Trend Identification and Insight",
     "link": "https://goecomspy.com",
     "img": {
-      "src": "/work/portfolio-2-ecomspy.png",
+      "src": "/work/portfolio-2-ecomspy.webp",
       "alt": "Duowork portfolio - Ecomspy"
     }
   },
@@ -75,7 +75,7 @@
     "platform": "Web · Mobile Responsive",
     "outcome": "Memorable Brand Recall",
     "img": {
-      "src": "/work/portfolio-4-sg.png",
+      "src": "/work/portfolio-4-sg.webp",
       "alt": "Duowork portfolio - Ecomspy"
     }
   },
@@ -95,7 +95,7 @@
     "outcome": "Service Clarity and Audience Reach",
     "link": "http://avatamedia.org",
     "img": {
-      "src": "/work/portfolio-5-avatamedia.png",
+      "src": "/work/portfolio-5-avatamedia.webp",
       "alt": "Duowork portfolio - AVATAMedia"
     }
   },
@@ -110,12 +110,12 @@
     "cap": "Powerful HTTP client for making and managing network requests with ease in the browser",
     "tag": ["developer tool", "browser extension", "HTTP client"],
     "role": "Engineering",
-    "link": "https://www.npmjs.com/package/fetchfully.png",
+    "link": "https://www.npmjs.com/package/fetchfully.webp",
     "time": "3 months",
     "platform": "Web · HTTP-client",
     "outcome": "Accelerated Network Request Cycles",
     "img": {
-      "src": "/work/portfolio-6-fetchfully.png",
+      "src": "/work/portfolio-6-fetchfully.webp",
       "alt": "Duowork portfolio - Fetchfully"
     }
   }
