@@ -23,7 +23,7 @@ export default function TopNav() {
         </Link>
 
         <Link
-          to="/work"
+          to="/our-work"
           className="flex items-center gap-1 hover:text-duo-green-200 transition-colors"
         >
           Our work
