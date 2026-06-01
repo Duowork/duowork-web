@@ -17,7 +17,7 @@ export default function Hero() {
 
           {/* Heading */}
           <h1 className="font-archivo-black text-[clamp(32px,5.2vw,84px)] leading-[0.95] tracking-[-0.025em] mt-3 md:mt-5 mb-0 [text-wrap:balance]">
-            We help organizations operate at{" "}
+            We help businesses operate at{" "}
             <span className="text-duo-green-200">AI speed.</span>
           </h1>
 
