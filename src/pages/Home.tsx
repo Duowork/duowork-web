@@ -61,7 +61,7 @@ export default function Home() {
               (service, index) => (
                 <div
                   key={index}
-                  className="shrink-0 mx-2 sm:mx-4 md:mx-6 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full border border-duo-green-600 bg-duo-dark/50 backdrop-blur-sm"
+                  className="shrink-0 mx-2 sm:mx-4 md:mx-6 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full border border-duo-green-600 bg-duo-dark/85 backdrop-blur-lg"
                 >
                   <span className="text-white text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">
                     {service}
@@ -79,7 +79,7 @@ export default function Home() {
               (service, index) => (
                 <div
                   key={index}
-                  className="shrink-0 mx-2 sm:mx-4 md:mx-6 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full border border-duo-green-600 bg-duo-dark/50 backdrop-blur-sm"
+                  className="shrink-0 mx-2 sm:mx-4 md:mx-6 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full border border-duo-green-600 bg-duo-dark/85 backdrop-blur-lg"
                 >
                   <span className="text-white text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">
                     {service}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, X, ExternalLink } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import ContactForm from "../components/ContactForm";
 
 /* ----------------------------------------------------------------------- */
@@ -48,7 +48,8 @@ export default function Contact() {
 
                 <div className="flex items-center gap-2">
                   <Mail className="text-gray-400 text-2xl mr-2" />
-                  <span>reach@duowork.tech</span>
+                  <span>reach@duowork.tech</span> | 
+                  <span>reach.duoworkhq@gmail.com</span>
                 </div>
               </div>
 
@@ -56,7 +57,7 @@ export default function Contact() {
                 id="contact-icon"
                 className="flex items-center justify-between"
               >
-                <div className="flex flex-row justify-start align-items flex-wrap text-white">
+                <div className="flex flex-row justify-start align-items flex-wrap text-white gap-5">
                   <div className="icons items h-10 w-10 rounded-xl flex justify-center items-center">
                     <a
                       href="https://twitter.com/DuoworkHQ"
@@ -64,7 +65,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className="text-lg block underline"
                     >
-                      <X />
+                    Twitter/X
                     </a>
                   </div>
 
@@ -75,7 +76,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className="text-lg block underline"
                     >
-                      <ExternalLink />
+                      Instagram
                     </a>
                   </div>
 
@@ -86,7 +87,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className="text-lg block underline"
                     >
-                      {/* <Linkedin /> */}
+                    LinkedIn
                     </a>
                   </div>
                 </div>
