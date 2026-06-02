@@ -44,7 +44,7 @@ export default function ContactVariantB() {
       <div className="grid md:grid-cols-3 gap-6">
         {/* Book a Call - Accent Tile */}
         <a
-          href="https://cal.com/duowork"
+          href="https://calendly.com/reach-duoworkhq/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="relative overflow-hidden bg-duo-green-200 text-duo-dark border border-transparent rounded-[26px] p-8 flex flex-col gap-3.5 min-h-[200px] hover:-translate-y-1 transition-all group"
