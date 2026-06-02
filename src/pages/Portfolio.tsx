@@ -6,6 +6,7 @@ import PortfolioCard from "./portfolio/PortfolioCard";
 import ProjectModal from "./portfolio/ProjectModal";
 import DEFAULT_PROJECTS from "./portfolio/projects";
 import { type Project } from "./portfolio/projects";
+import ClosingCTA from "../components/ClosingCTA";
 
 /* ------------------------------------------------------------------------------ */
 
@@ -38,6 +39,8 @@ export default function Portfolio() {
           ))}
         </div>
       </section>
+
+      <ClosingCTA contactBtn/>
 
       <ProjectModal
         project={openProject}

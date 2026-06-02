@@ -7,7 +7,7 @@ import PhoneMockup from "./PhoneMockup";
 import StatBlock from "./StatBlock";
 import IntegrationGrid from "./IntegrationGrid";
 import GrowthChart from "./GrowthChart";
-import ClosingCTA from "./ClosingCTA";
+import ClosingCTA from "../../components/ClosingCTA";
 
 export default function LearnMore() {
   return (
@@ -163,7 +163,7 @@ export default function LearnMore() {
       </div>
 
       {/* Closing CTA */}
-      <ClosingCTA />
+      <ClosingCTA contactBtn portfolioBtn />
     </section>
   );
 }

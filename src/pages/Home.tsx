@@ -46,7 +46,7 @@ export default function Home() {
         <Link
           to="/contact"
           id="hero-button"
-          className="w-full max-w-87.5 sm:w-50 flex items-center justify-center self-center text-duo-dark rounded-md py-2! px-4! text-center bg-duo-green-200"
+          className="w-full max-w-87.5 sm:w-50 flex items-center justify-center self-center text-duo-dark text-center bg-duo-green-200 px-7 py-4 rounded-[14px]"
           title="Hire Us"
         >
           Hire Us

@@ -36,14 +36,14 @@ export default function Hero() {
         <div className="relative z-10 flex flex-wrap gap-3.5 items-center">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-3 bg-duo-green-200 text-duo-dark px-7 py-4 rounded-full font-archivo-black text-sm tracking-[0.05em] uppercase shadow-[0_14px_32px_-14px_rgba(158,255,81,0.55)] transition-transform duration-200 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-3 bg-duo-green-200 text-duo-dark px-7 py-4 rounded-[14px] font-archivo-black text-sm tracking-[0.05em] uppercase shadow-[0_14px_32px_-14px_rgba(158,255,81,0.55)] transition-transform duration-200 hover:-translate-y-0.5"
           >
             Talk to us
             <ArrowUpRight className="w-4 h-4" strokeWidth={2.4} />
           </Link>
           <Link
             to="/our-work"
-            className="inline-flex items-center gap-2.5 text-white px-5 py-3.5 rounded-full border border-duo-dark text-sm font-medium transition-all duration-200 hover:border-duo-green-200 hover:text-duo-green-200"
+            className="inline-flex items-center gap-2.5 text-white px-5 py-3.5 rounded-[14px] border border-duo-dark text-sm font-medium transition-all duration-200 hover:border-duo-green-200 hover:text-duo-green-200"
           >
             See selected work
             <svg

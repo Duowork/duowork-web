@@ -1,7 +1,12 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function ClosingCTA() {
+interface ClosingCTA {
+  contactBtn?:boolean,
+  portfolioBtn?: boolean
+}
+
+export default function ClosingCTA({contactBtn, portfolioBtn}:ClosingCTA) {
   return (
     <section className="max-w-370 mx-auto pb-12 md:pb-22.5 px-5 md:px-10">
       <div className="relative overflow-hidden bg-duo-green-200 text-duo-dark rounded-[20px] md:rounded-[30px] px-7 md:px-14 py-10 md:py-15 flex flex-col md:flex-row items-center md:items-center justify-between gap-6 md:gap-8 flex-wrap">
@@ -18,16 +23,17 @@ export default function ClosingCTA() {
         </div>
 
         <div className="flex gap-2.5 md:gap-3.5 flex-wrap items-center justify-center relative z-1">
-          <Link
+          {contactBtn && (<Link
             to="/contact"
-            className="inline-flex items-center gap-2 md:gap-3 bg-duo-dark text-white px-5 md:px-7 py-3 md:py-4 rounded-full font-archivo-black text-xs md:text-sm tracking-[0.05em] uppercase transition-transform duration-200 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 md:gap-3 bg-duo-dark text-white px-5 md:px-7 py-3 md:py-4 rounded-[14px] font-archivo-black text-xs md:text-sm tracking-[0.05em] uppercase transition-transform duration-200 hover:-translate-y-0.5"
           >
             Talk to us
             <ArrowUpRight className="w-3.5 md:w-4 h-3.5 md:h-4" strokeWidth={2.4} />
-          </Link>
-          <Link
+          </Link>)}
+
+          {portfolioBtn && (<Link
             to="/our-work"
-            className="inline-flex items-center gap-2 md:gap-2.5 text-duo-dark px-4 md:px-5 py-3 md:py-4 rounded-full border-[1.5px] border-duo-dark text-xs md:text-sm font-bold transition-all duration-200 hover:bg-duo-dark hover:text-white"
+            className="inline-flex items-center gap-2 md:gap-2.5 text-duo-dark px-4 md:px-5 py-3 md:py-4 rounded-[14px] border-[1.5px] border-duo-dark text-xs md:text-sm font-bold transition-all duration-200 hover:bg-duo-dark hover:text-white"
           >
             See our work
             <svg
@@ -42,7 +48,7 @@ export default function ClosingCTA() {
               <path d="M5 12h14" />
               <path d="m13 6 6 6-6 6" />
             </svg>
-          </Link>
+          </Link>)}
         </div>
       </div>
     </section>
