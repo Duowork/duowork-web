@@ -1,4 +1,4 @@
-import TopNav from "../components/TopNav";
+// import TopNav from "../components/TopNav";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
       className="h-screen bg-no-repeat bg-top bg-cover relative bg-[url('/team.webp')] bg-black/80 bg-blend-overlay"
     >
       {/* Navigation */}
-      <TopNav />
+      {/* <TopNav /> */}
 
       {/* Hero strip */}
       <div

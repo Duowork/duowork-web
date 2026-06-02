@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import TopNav from "../components/TopNav";
+// import TopNav from "../components/TopNav";
 import Header from "./portfolio/Header";
 // import FilterBar from "./portfolio/FilterBar";
 import PortfolioCard from "./portfolio/PortfolioCard";
@@ -20,7 +20,7 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-duo-dark text-white antialiased font-archivo">
-      <TopNav />
+      {/* <TopNav /> */}
 
       <Header />
 

@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom";
 import { Headphones, MoveUpRight, Briefcase, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function TopNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="relative flex items-center justify-between p-2 z-40">
+    <nav
+      className={`w-full top-0 flex items-center justify-between p-2 z-40 fixed pb-5 transition-colors duration-300 ${
+        isScrolled ? "bg-duo-dark border-b border-white/8" : ""
+      }`}
+    >
       <div className="size-14 relative">
         <img src="/logo.png" alt="" className="size-full" />
         <Link to="/" className="absolute top-0 left-0 size-full"></Link>

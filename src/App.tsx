@@ -6,13 +6,16 @@ import Portfolio from "./pages/Portfolio";
 import NotFound from "./pages/NotFound";
 // import CustomCursor from './components/CustomCursor'
 import "./App.css";
+import TopNav from "./components/TopNav";
 
 /* --------------------------------------------------------------- */
 
 function App() {
   return (
     <>
-      <main id="duowork" className="relative">
+      <main id="duowork" className="relative bg-duo-dark">
+        <TopNav/>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />

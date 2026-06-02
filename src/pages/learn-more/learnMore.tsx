@@ -1,4 +1,4 @@
-import TopNav from "../../components/TopNav";
+// import TopNav from "../../components/TopNav";
 import Hero from "./Hero";
 // import TrustStrip from "./TrustStrip";
 import ServiceTile from "./ServiceTile";
@@ -12,7 +12,7 @@ import ClosingCTA from "./ClosingCTA";
 export default function LearnMore() {
   return (
     <section className="bg-duo-dark text-white min-h-screen">
-      <TopNav />
+      {/* <TopNav /> */}
 
       {/* Hero Section */}
       <Hero />

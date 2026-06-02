@@ -56,7 +56,7 @@ export default function ContactVariantB() {
             Prefer to talk?
           </div>
           <h3 className="font-archivo-black text-[22px] leading-tight tracking-tight">
-            Book a 20-min intro call
+            Book a 30-min intro call
           </h3>
           <p className="text-[rgba(34,34,34,0.78)] text-sm leading-relaxed">
             Grab a slot that works for you — no prep needed.
@@ -118,7 +118,7 @@ export default function ContactVariantB() {
             Abuja, Nigeria
           </h3>
           <p className="text-white/72 text-sm leading-relaxed">
-            Working remote with teams worldwide, across every timezone.
+            Working remote with teams worldwide.
           </p>
         </div>
       </div>
@@ -203,13 +203,13 @@ export default function ContactVariantB() {
       </div>
 
       {/* Footer */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#3a3a3a] pt-6 text-white/50 text-[13px] tracking-wider">
+      {/* <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#3a3a3a] pt-6 text-white/50 text-[13px] tracking-wider">
         <span className="inline-flex items-center gap-2 text-white/72">
           <span className="w-2 h-2 rounded-full bg-duo-green-200" />
           Replies same business day · Mon–Fri
         </span>
         <span>&copy; Duowork · Abuja / Remote</span>
-      </div>
+      </div> */}
     </div>
   );
 }
