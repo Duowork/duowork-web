@@ -96,7 +96,7 @@ export default function TopNav() {
           </Link>
 
           <Link
-            to="/learn-more"
+            to="/what-we-do"
             className="flex items-center gap-2 text-2xl font-medium hover:text-duo-green-200 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >

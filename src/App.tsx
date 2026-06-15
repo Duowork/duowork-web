@@ -19,11 +19,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/learn-more" element={<LearnMore />} />
+          <Route path="/what-we-do" element={<LearnMore />} />
           <Route path="/our-work" element={<Portfolio />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </main>
+      </main> 
       {/* <CustomCursor /> */}
     </>
   );
