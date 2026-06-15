@@ -33,17 +33,17 @@ export default function Hero() {
         </div>
 
         {/* Actions */}
-        <div className="relative z-10 flex flex-wrap gap-3.5 items-center">
+        <div className="relative z-10 flex flex-wrap gap-3.5 items-center justify">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-3 bg-duo-green-200 text-duo-dark px-7 py-4 rounded-[14px] font-archivo-black text-sm tracking-[0.05em] uppercase shadow-[0_14px_32px_-14px_rgba(158,255,81,0.55)] transition-transform duration-200 hover:-translate-y-0.5"
+            className="w-full sm:max-w-50 inline-flex items-center gap-3 bg-duo-green-200 text-duo-dark px-7 py-4 rounded-[14px] font-archivo-black text-sm tracking-[0.05em] uppercase shadow-[0_14px_32px_-14px_rgba(158,255,81,0.55)] transition-transform duration-200 hover:-translate-y-0.5"
           >
             Talk to us
             <ArrowUpRight className="w-4 h-4" strokeWidth={2.4} />
           </Link>
           <Link
             to="/our-work"
-            className="inline-flex items-center gap-2.5 text-white px-5 py-3.5 rounded-[14px] border border-duo-dark text-sm font-medium transition-all duration-200 hover:border-duo-green-200 hover:text-duo-green-200"
+            className="w-full sm:max-w-50 inline-flex items-center gap-2.5 text-white px-5 py-3.5 rounded-[14px] border border-duo-dark text-sm font-medium transition-all duration-200 hover:border-duo-green-200 hover:text-duo-green-200"
           >
             See selected work
             <svg
@@ -67,7 +67,7 @@ export default function Hero() {
         <img
           className="absolute inset-0 w-full h-full object-cover"
           alt="Team collaborating in a workspace"
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1100&q=70"
+          src="/what-we-do/hero-image.webp"
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 z-1 pointer-events-none bg-linear-to-b from-[rgba(20,20,20,0.1)] to-[rgba(18,18,18,0.86)]" />

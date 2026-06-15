@@ -46,7 +46,7 @@ export default function TopNav() {
         </Link>
 
         <Link
-          to="/learn-more"
+          to="/what-we-do"
           className="flex items-center gap-1 hover:text-duo-green-200 transition-colors"
         >
           What we do
@@ -57,7 +57,7 @@ export default function TopNav() {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="md:hidden flex flex-col gap-1.5 z-50 p-2"
+        className="md:hidden flex flex-col gap-1.5 z-50 p-2 cursor-pointer hover:scale-105"
         aria-label="Toggle menu"
       >
         {isMenuOpen ? (
