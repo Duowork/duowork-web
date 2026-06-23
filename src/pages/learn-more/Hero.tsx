@@ -11,8 +11,8 @@ export default function Hero() {
 
         <div className="relative z-10">
           {/* Eyebrow */}
-          <span className="inline-flex items-center gap-2.5 text-xs tracking-[0.22em] uppercase bg-duo-green-200/12 border border-duo-green-200/32 rounded-full px-3.5 py-1.5">
-            WHAT WE DO
+          <span className="text-xs tracking-[0.22em] uppercase text-duo-green-200 font-archivo">
+            // What we do
           </span>
 
           {/* Heading */}
