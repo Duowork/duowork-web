@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { Headphones, MoveUpRight, Briefcase, X } from "lucide-react";
+import {
+  Headphones,
+  MoveUpRight,
+  Briefcase,
+  X,
+  ShieldQuestionMark,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function TopNav() {
@@ -12,7 +18,7 @@ export default function TopNav() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -30,11 +36,11 @@ export default function TopNav() {
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-3 sm:gap-4 text-white z-20">
         <Link
-          to="/contact"
+          to="/what-we-do"
           className="flex items-center gap-1 hover:text-duo-green-200 transition-colors"
         >
-          Contact us
-          <Headphones className="w-5 h-5" />
+          What we do
+          <MoveUpRight className="w-5 h-5" />
         </Link>
 
         <Link
@@ -46,11 +52,18 @@ export default function TopNav() {
         </Link>
 
         <Link
-          to="/what-we-do"
+          to="/contact"
           className="flex items-center gap-1 hover:text-duo-green-200 transition-colors"
         >
-          What we do
-          <MoveUpRight className="w-5 h-5" />
+          Contact us
+          <Headphones className="w-5 h-5" />
+        </Link>
+        <Link
+          to="/contact"
+          className="flex items-center gap-1 hover:text-duo-green-200 transition-colors"
+        >
+          About us
+          <ShieldQuestionMark className="w-5 h-5" />
         </Link>
       </div>
 
@@ -78,12 +91,12 @@ export default function TopNav() {
       >
         <div className="flex flex-col justify-center h-full gap-8 text-white overflow-hidden!">
           <Link
-            to="/contact"
+            to="/what-we-do"
             className="flex items-center gap-2 text-2xl font-medium hover:text-duo-green-200 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            Contact us
-            <Headphones className="w-6 h-6" />
+            What we do
+            <MoveUpRight className="w-6 h-6" />
           </Link>
 
           <Link
@@ -96,12 +109,30 @@ export default function TopNav() {
           </Link>
 
           <Link
-            to="/what-we-do"
+            to="/contact"
             className="flex items-center gap-2 text-2xl font-medium hover:text-duo-green-200 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            What we do
-            <MoveUpRight className="w-6 h-6" />
+            Contact us
+            <Headphones className="w-6 h-6" />
+          </Link>
+
+          <Link
+            to="/contact"
+            className="flex items-center gap-2 text-2xl font-medium hover:text-duo-green-200 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact us
+            <Headphones className="w-6 h-6" />
+          </Link>
+
+          <Link
+            to="/contact"
+            className="flex items-center gap-2 text-2xl font-medium hover:text-duo-green-200 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About us
+            <ShieldQuestionMark className="w-6 h-6" />
           </Link>
         </div>
       </div>
