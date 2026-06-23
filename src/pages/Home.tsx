@@ -1,7 +1,10 @@
 // import TopNav from "../components/TopNav";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   const servicesRow1 = [
     "Product Strategy",
     "Product MVP",
@@ -18,38 +21,56 @@ export default function Home() {
     "AI Auditing",
   ];
 
+  useEffect(() => {
+    if (videoRef) {
+      (videoRef.current as HTMLVideoElement).play();
+      (videoRef.current as HTMLVideoElement).autoplay = true;
+      (videoRef.current as HTMLVideoElement).loop = true;
+
+      console.log("This working?");
+    }
+  }, []);
+
   return (
-    <section
-      id="hero-section"
-      className="h-screen bg-no-repeat bg-top bg-cover relative bg-[url('/team.webp')] bg-black/80 bg-blend-overlay"
-    >
-      {/* Navigation */}
-      {/* <TopNav /> */}
+    <section id="hero-section" className="h-screen relative">
+      {/* Video */}
+      <video
+        src="/duowork-backdrop-vid.mov"
+        className="absolute w-full top-0 left-0 appearance-none bg-cover bg-top z-5"
+        loop
+        ref={(ref) => {
+          videoRef.current = ref;
+        }}
+      ></video>
+
+      {/* Overlay */}
+      <div className="absolute size-full top-0 left-0 bg-black/81 bg-blend-overlay z-10" />
 
       {/* Hero strip */}
       <div
         id="hero-container"
         className="flex flex-col item-center justify-center gap-6 md:gap-8 lg:gap-10 h-screen absolute left-0 top-0 w-full px-2 sm:px-4 pb-32 sm:pb-40 md:pb-48 z-20"
       >
-        <h1 className="w-full max-w-200 text-[2.3rem] md:text-4xl lg:text-6xl text-white text-center font-bold self-center leading-snug">
-          Weapon of Mass Creation.
+        <h1 className="w-full max-w-200 text-[2.3rem] md:text-4xl lg:text-5xl text-white text-center font-bold self-center leading-normal">
+          {/* Weapon of Mass Creation. */}
+          Duowork Software Solutions
         </h1>
 
         <p
           id="hero-description"
-          className="w-full md:max-w-140 text-white text-center self-center text-lg px-4 sm:px-0 font-light sm:w-1/2"
+          className="w-full md:max-w-140 text-white text-center self-center text-lg md:text-xl px-4 sm:px-0 font-light sm:w-1/2"
         >
-          We build smart products and orchestrate solutions for businesses and
-          organization that can't afford to move slow.
+          We integrate and build smart solutions for businesses
+          that can't afford to move slow.
         </p>
 
         <Link
           to="/contact"
           id="hero-button"
-          className="w-full max-w-87.5 sm:w-50 flex items-center justify-center self-center text-duo-dark text-center bg-duo-green-200 px-7 py-4 rounded-[14px]"
+          className="w-full max-w-87.5 sm:w-50 flex items-center justify-center self-center sm:text-[18px] text-duo-dark font-title font-medium text-center bg-duo-green-200 p-3 rounded-[14px]"
           title="Hire Us"
         >
-          Hire Us
+          WORK WITH US
         </Link>
       </div>
 
