@@ -1,9 +1,9 @@
 // import TopNav from "../components/TopNav";
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  // const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const servicesRow1 = [
     "Product Strategy",
@@ -21,27 +21,28 @@ export default function Home() {
     "AI Auditing",
   ];
 
-  useEffect(() => {
-    if (videoRef) {
-      (videoRef.current as HTMLVideoElement).play();
-      (videoRef.current as HTMLVideoElement).autoplay = true;
-      (videoRef.current as HTMLVideoElement).loop = true;
+  // useEffect(() => {
+  //   if (videoRef) {
+  //     (videoRef.current as HTMLVideoElement).play();
+  //     (videoRef.current as HTMLVideoElement).autoplay = true;
+  //     (videoRef.current as HTMLVideoElement).loop = true;
 
-      console.log("This working?");
-    }
-  }, []);
+  //     console.log("This working?");
+  //   }
+  // }, []);
 
   return (
     <section id="hero-section" className="h-screen relative">
       {/* Video */}
-      <video
+      {/* <video
         src="/duowork-backdrop-vid.mov"
         className="absolute w-full top-0 left-0 appearance-none bg-cover bg-top z-5"
         loop
         ref={(ref) => {
           videoRef.current = ref;
         }}
-      ></video>
+      ></video> */}
+      <img src="/team.webp" alt="" className="size-full" />
 
       {/* Overlay */}
       <div className="absolute size-full top-0 left-0 bg-black/81 bg-blend-overlay z-10" />
