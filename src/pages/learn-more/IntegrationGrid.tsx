@@ -2,7 +2,6 @@ import {
   CreditCard,
   MessageSquare,
   Database,
-  Sparkles,
   FileText,
   BarChart3,
   Mail,
@@ -18,7 +17,7 @@ export default function IntegrationGrid() {
     { icon: CreditCard, label: "CRM" },
     { icon: MessageSquare, label: "Slack" },
     { icon: Database, label: "Data" },
-    { icon: Sparkles, label: "Duowork", core: true },
+    { label: "Duowork", core: true },
     { icon: FileText, label: "Docs" },
     { icon: BarChart3, label: "BI" },
     { icon: Mail, label: "Email" },
@@ -52,10 +51,12 @@ export default function IntegrationGrid() {
                   : "bg-[#2b2b2b] border-duo-grey/30 text-white/[0.72] hover:-translate-y-0.5 hover:border-duo-green-200/[0.32] hover:text-white"
               }`}
             >
-              <Icon
-                className={`w-3.5 md:w-5 h-3.5 md:h-5 ${item.core ? "text-duo-dark" : "text-white"}`}
-                strokeWidth={1.8}
-              />
+              {Icon && (
+                <Icon
+                  className={`w-3.5 md:w-5 h-3.5 md:h-5 ${item.core ? "text-duo-dark" : "text-white"}`}
+                  strokeWidth={1.8}
+                />
+              )}
               <span className="hidden sm:inline">{item.label}</span>
             </div>
           );

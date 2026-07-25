@@ -22,7 +22,7 @@ export default function ServiceTile({
 }: ServiceTileProps) {
   return (
     <article
-      className={`${widthClass} min-w-0 relative overflow-hidden bg-[#2a2a2a] border border-white/[0.08] rounded-[20px] md:rounded-[28px] p-6 md:p-9 flex flex-col transition-all duration-[250ms] hover:border-duo-green-200/[0.32] hover:-translate-y-0.5`}
+      className={`${widthClass} min-w-0 relative overflow-hidden bg-[#2a2a2a] rounded-[20px] md:rounded-[28px] p-6 md:p-9 flex flex-col transition-all duration-[250ms]`}
     >
       <div className="flex-1 flex flex-col min-w-0">
         <span className="font-mono text-[10px] md:text-xs text-duo-green-200 tracking-[0.08em] mb-3 md:mb-4 inline-flex items-center gap-2">

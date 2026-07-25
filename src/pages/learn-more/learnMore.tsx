@@ -26,10 +26,6 @@ export default function LearnMore() {
           Five ways we move you{" "}
           <span className="text-duo-green-200">forward.</span>
         </h2>
-        <p className="text-white/50 text-sm md:text-[15px] max-w-[44ch] leading-normal">
-          From the first audit to long-term operating leverage — every
-          engagement is built to compound, not to sit on a shelf.
-        </p>
       </div>
 
       {/* Bento Grid */}
@@ -54,7 +50,7 @@ export default function LearnMore() {
           step="02 — BUILD"
           title="Launch products competitors"
           titleHighlight="can't easily copy."
-          description="We design and ship web & mobile products with intelligence baked into the scope — software that streamlines, learns and gets faster over time."
+          description="We design, build, and ship web & mobile products. software that streamlines, learns and gets faster over time."
           benefits={[
             "Faster time-to-market with AI-assisted dev",
             "Built-in automation from day one",
@@ -94,7 +90,7 @@ export default function LearnMore() {
         />
 
         {/* T5 - Evolve (full width) */}
-        <article className="w-full min-w-0 relative overflow-hidden bg-[#2a2a2a] border border-white/8 rounded-[20px] md:rounded-[28px] p-6 md:p-11 grid grid-cols-1 lg:grid-cols-[1fr_1.12fr] gap-6 md:gap-9 items-stretch transition-all duration-[250ms] hover:border-duo-green-200/32 hover:-translate-y-0.5">
+        <article className="w-full min-w-0 relative overflow-hidden bg-[#2a2a2a]  rounded-[20px] md:rounded-[28px] p-6 md:p-11 grid grid-cols-1 lg:grid-cols-[1fr_1.12fr] gap-6 md:gap-9 items-stretch transition-all duration-[250ms]">
           <div className="flex flex-col justify-center">
             <span className="font-mono text-[10px] md:text-xs text-duo-green-200 tracking-[0.08em] mb-3 md:mb-4 inline-flex items-center gap-2">
               <span className="w-3.5 md:w-4.5 h-px bg-duo-green-200" />
@@ -107,7 +103,7 @@ export default function LearnMore() {
             </h3>
 
             <p className="text-white/72 text-sm md:text-[15px] leading-[1.55] mb-4 md:mb-5 max-w-[46ch]">
-              AI is moving fast. We build systems that adapt — so you're not
+              Systems that adapt so you're not
               constantly rebuilding, just upgrading. Continuous improvement, not
               one-off delivery.
             </p>

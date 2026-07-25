@@ -58,13 +58,13 @@ export default function TopNav() {
           Contact us
           <Headphones className="w-5 h-5" />
         </Link>
-        <Link
+        {/* <Link
           to="/contact"
           className="flex items-center gap-1 hover:text-duo-green-200 transition-colors"
         >
           About us
           <ShieldQuestionMark className="w-5 h-5" />
-        </Link>
+        </Link> */}
       </div>
 
       {/* Mobile Menu Button */}

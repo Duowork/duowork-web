@@ -53,7 +53,7 @@ export default function Home() {
       >
         <h1 className="w-full max-w-200 text-[2.3rem] md:text-4xl lg:text-5xl text-white text-center font-bold self-center leading-normal">
           {/* Weapon of Mass Creation. */}
-          Duowork Software Solutions
+          Duowork
         </h1>
 
         <p
