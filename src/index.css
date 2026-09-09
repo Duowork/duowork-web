@@ -1,198 +1,246 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap");
-
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   Duowork 2.0 design tokens.
+   Values are fixed by design_handoff_duowork-2.0_website/README.md —
+   change them there first, then here.
+   --------------------------------------------------------------- */
+
 @theme {
-  --font-title: "IBM Plex Sans Condensed", sans-serif;
-  --font-body: "Poppins", sans-serif;
-  --font-archivo: "Archivo", ui-sans-serif, system-ui, sans-serif;
-  --font-archivo-black: "Archivo Black", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", "Courier New", monospace;
+  --font-title: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", monospace;
 
-  --color-duo-green-50: #def2bf;
-  --color-duo-green-200: #9eff51;
-  --color-duo-green-400: #8cbf40;
-  --color-duo-green-600: #3ea645;
-  --color-duo-green-900: #03734b;
-  --color-duo-dark: #222222;
-  --color-duo-grey: #939498;
+  /* Core palette — never more than two backgrounds on a page: white and carbon. */
+  --color-carbon: #222222;
+  --color-volt: #9eff51;
+
+  /* On white */
+  --color-volt-tint: rgba(158, 255, 81, 0.15);
+  --color-volt-card: rgba(158, 255, 81, 0.2);
+  --color-ink-80: rgba(34, 34, 34, 0.8);
+  --color-ink-60: rgba(34, 34, 34, 0.6);
+  --color-ink-30: rgba(34, 34, 34, 0.3);
+  --color-hairline: rgba(34, 34, 34, 0.08);
+  --color-hairline-strong: rgba(34, 34, 34, 0.1);
+
+  /* On carbon */
+  --color-paper-70: rgba(255, 255, 255, 0.7);
+  --color-paper-60: rgba(255, 255, 255, 0.6);
+  --color-paper-40: rgba(255, 255, 255, 0.4);
+  --color-hairline-dark: rgba(255, 255, 255, 0.2);
+  --color-surface-dark: rgba(255, 255, 255, 0.06);
+
+  --color-veil: rgba(34, 34, 34, 0.4);
+
+  /* Not in the handoff: the design specifies no error colour, but the contact
+     form needs inline validation. Kept desaturated so it reads as a notice
+     rather than competing with volt. */
+  --color-alert: #ff9a8f;
+
+  /* Shadows */
+  --shadow-mock: 0 16px 44px rgba(34, 34, 34, 0.14);
+  --shadow-card: 0 8px 24px rgba(34, 34, 34, 0.12);
+  --shadow-nav: 0 4px 30px rgba(34, 34, 34, 0.1);
+  --shadow-sheet: 0 -16px 48px rgba(34, 34, 34, 0.2);
+
+  /* Easings */
+  --ease-out-soft: cubic-bezier(0, 0, 0.2, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-sheet: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-rise: dwRise 350ms cubic-bezier(0, 0, 0.2, 1) both;
+  --animate-underline: dwUnderline 600ms cubic-bezier(0.4, 0, 0.2, 1) 560ms both;
+  --animate-marquee: dwMarquee 30s linear infinite;
+  --animate-veil: dwVeil 200ms ease-out both;
+  --animate-sheet-up: dwSheetUp 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* General styles for tags in pages/components */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-title);
-}
-
-p,
-div,
-a,
-span,
-button,
-label,
-b,
-em,
-i,
-strong {
-  font-family: var(--font-body);
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.custom-text-dark {
-  color: var(--color-duo-dark);
-}
-
-.text-secondary {
-  color: var(--color-duo-dark);
-}
-
-.custom-underline-green-accent {
-  border-width: 3px;
-  border-color: var(--color-duo-green-200);
-}
-
-.underline-color-accent {
-  border-width: 3px;
-  border-color: var(--color-duo-green-200);
-}
-
-.custom-bg-green-accent {
-  background-color: var(--color-duo-green-200);
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.bg-color-accent {
-  background-color: var(--color-duo-green-200);
-}
-
-.custom-text-green-accent {
-  background-color: var(--color-duo-green-200);
-}
-
-.text-color-accent {
-  color: var(--color-duo-green-200);
-}
-
-.custom-bg-dark {
-  background-color: var(--color-duo-dark);
-}
-
-.text-color-secondary {
-  color: var(--color-duo-dark);
-}
-
-.bg-color-secondary {
-  background-color: var(--color-duo-dark);
-}
-
-.cta-btn {
-  height: 50px;
-  background-color: var(--color-duo-green-200);
-  border-radius: 0.75rem; 
-  padding: 8px 16px 8px 16px;
-}
-
-.cta-btn.nav-contact-cta {
-  width: 10rem;
-  background-color: var(--color-duo-green-200);
-  color: var(--color-duo-dark);
-}
-
-.cta-btn.intro-cta-btn {
-  width: 250px;
-}
-
-.cta-btn.services-request-cta {
-  width: 200px;
-  height: 40px !important;
-  background-color: white !important;
-}
-
-.cta-btn.service-contact-cta {
-  width: 200px;
-  height: 40px;
-  border-radius: 5px !important;
-}
-
-/* Loader */
-.loader {
-  width: 40px;
-  height: 48px;
-  display: inline-block;
-  position: relative;
-}
-
-.loader::after,
-.loader::before {
-  content: "";
-  box-sizing: border-box;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #fff;
-  position: absolute;
-  left: 0;
-  top: 0;
-  animation: animloader 2s linear infinite;
-}
-
-.loader::after {
-  animation-delay: 1s;
-}
-
-@keyframes animloader {
-  0% {
-    transform: scale(0);
-    opacity: 1;
+@keyframes dwRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
-  100% {
-    transform: scale(1);
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dwUnderline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dwMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dwVeil {
+  from {
     opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
 }
 
-.section-heading .section-tag {
-  display: block;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--color-duo-dark);
-  margin-bottom: 1.25rem;
+@keyframes dwSheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
 }
 
-.section-heading .section-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 0.125rem;
-  margin-bottom: 1.25rem;
-  text-align: center;
+/* --------------------------------------------------------------- */
+
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: var(--color-carbon);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-title);
+    text-wrap: pretty;
+  }
+
+  /* Anchored sections sit under the fixed floating nav. */
+  [id] {
+    scroll-margin-top: 100px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-volt);
+    outline-offset: 2px;
+  }
 }
 
-.section-heading .section-title .service-title__highlight {
-  background-color: var(--color-duo-green-200);
-  padding-left: 0.125rem;
-  padding-right: 0.125rem;
-  font-family: var(--font-title);
+@layer components {
+  /* Every unfilled image slot in the design. */
+  .dw-hatch {
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(34, 34, 34, 0.03) 0 12px,
+      rgba(34, 34, 34, 0.06) 12px 24px
+    );
+  }
+
+  /* The one gradient in the design: a volt wash that sweeps across the contact
+     section the first time it enters the viewport. */
+  .dw-wash {
+    background: linear-gradient(
+      115deg,
+      rgba(158, 255, 81, 0.22),
+      rgba(158, 255, 81, 0) 60%
+    );
+    clip-path: polygon(0 0, 0 0, 0 100%, -20% 100%);
+    transition: clip-path 600ms var(--ease-standard);
+  }
+
+  .dw-wash[data-revealed="true"] {
+    clip-path: polygon(0 0, 100% 0, 120% 100%, -20% 100%);
+  }
+
+  /* Contact form controls, which only ever sit on carbon. */
+  .dw-field {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    transition: border-color 200ms var(--ease-standard);
+  }
+
+  /* The volt border is the focus indicator — it replaces the outline the
+     design removes. Never drop both. */
+  .dw-field:focus {
+    border-color: var(--color-volt);
+    outline: none;
+  }
+
+  .dw-field::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .dw-field[aria-invalid="true"] {
+    border-color: var(--color-alert);
+  }
+
+  select.dw-field {
+    appearance: none;
+  }
+
+  /* Native dropdown lists render on the OS surface, not on carbon. */
+  select.dw-field option {
+    color: #222222;
+  }
+
+  textarea.dw-field {
+    resize: vertical;
+  }
+
+  /* One name in the client strip. Both copies of the list must match exactly. */
+  .dw-marquee-item {
+    font-family: var(--font-title);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--color-ink-30);
+    padding: 0 48px;
+    white-space: nowrap;
+  }
+
+  /* Scroll-reveal: set by useReveal once the element enters the viewport. */
+  .dw-reveal {
+    opacity: 0;
+  }
+
+  .dw-reveal[data-revealed="true"] {
+    animation: var(--animate-rise);
+    animation-delay: var(--dw-reveal-delay, 0ms);
+  }
 }
 
-.section-heading .section-description {
-  text-align: center;
-  line-height: 1.375;
-  max-width: 35rem;
-  font-size: small;
-  font-weight: 300;
-  margin-top: 1.25rem;
-  margin-bottom: 2.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: var(--font-body);
+/* The handoff requires this block. Do not remove. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .dw-reveal {
+    opacity: 1 !important;
+  }
 }
