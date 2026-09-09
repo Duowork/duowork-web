@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# Duowork — Marketing Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The marketing site for [Duowork](https://www.duowork.tech), a Nigerian software
+studio building custom platforms, internal tools, and enterprise integrations.
 
-Currently, two official plugins are available:
+The site's job is to establish credibility and drive discovery-call bookings.
+Its centrepiece is the case-study grid: compact cards that expand into a bottom
+sheet covering the lower 75% of the viewport.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Pages
 
-## React Compiler
+| Route | Page |
+|---|---|
+| `/` | Home — hero, problem framing, services, process, why us, industries, selected work, testimonials, contact |
+| `/work` | Every case study, plus a closing CTA |
+| `/about` | Story, mission and vision, values, closing quote |
+| `/blog` | Filterable post index and newsletter signup |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Contact is a section on Home (`/#contact`) rather than its own page — the call
+button and direct details sit beside the form, deliberately equal in weight.
 
-## Expanding the ESLint configuration
+The 1.0 routes `/what-we-do`, `/our-work`, and `/contact` redirect to their 2.0
+equivalents so existing links keep working.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+React 19 · TypeScript · Vite 8 · React Router 7 · Tailwind CSS v4 ·
+react-hook-form · [Fetchfully](https://www.npmjs.com/package/fetchfully)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Tailwind is configured CSS-first in `src/index.css` — there is no
+`tailwind.config.js`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting started
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Script | Does |
+|---|---|
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Type-check and build to `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | ESLint — should pass with no output |
+| `npm run deploy` | Publish `dist/` to GitHub Pages |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Project layout
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+  data/          All site copy — edit content here, not in JSX
+  components/    Shared UI (nav, footer, buttons, case card + sheet, image slots)
+  hooks/         useReveal — one shared IntersectionObserver for scroll reveals
+  lib/           Icon paths, entrance animations, HTTP client
+  pages/         One file per route; Home composes pages/home/* sections
+public/          Brand marks, project screenshots, PWA assets
+```
+
+Copy lives in `src/data/`. Changing a headline or a case study means editing a
+data module, not hunting through components.
+
+## Design
+
+The design lives in `design_handoff_duowork-2.0_website/` (untracked — ask for
+the bundle if you don't have it). Its `README.md` is the spec: colour and type
+tokens, per-screen breakdowns, all final copy, motion timings, and accessibility
+requirements. It is high fidelity — every hex value, size, and easing curve in
+it is intended.
+
+Design tokens are defined as Tailwind `@theme` properties in `src/index.css`.
+Two colours carry the whole site: **carbon** `#222222` and **volt** `#9EFF51`,
+on a white ground. There are no gradients except a single volt wash on the
+contact section.
+
+## Before launch
+
+The site is structurally complete but not yet carrying real proof. Outstanding:
+
+- **Imagery** — only two real screenshots are wired up (Sable & Grey,
+  AvataMedia). Everything else is a visible hatch placeholder. Where no genuine
+  asset exists, remove the slot rather than fill it with stock.
+- **Illustrative copy** — case-study result figures and testimonial names are
+  invented, flagged in `src/data/` and badged in development only. Replace them
+  with verifiable content before going live.
+- **Unwired** — newsletter signup, blog post detail pages, `/privacy` and
+  `/terms`, real social URLs, and the phone number.
+- **Social share image** — `og:image` needs a real 1200×630 PNG.
+
+The contact form is wired, validated, and protected by a honeypot.
+
+See [CLAUDE.md](CLAUDE.md) for conventions, constraints, and the full gap list.
