@@ -104,8 +104,10 @@ Use the semantic token classes, not raw hex:
 
 Hard constraints from the design:
 
-- **Two background colours per page, maximum**: white and carbon. No gradients
-  except the single volt wash on the contact section (`.dw-wash`).
+- **Two background colours per page, maximum**: white and carbon. The only
+  gradients are on the contact section: the animated volt wash (`.dw-wash`) and
+  the scrim over its background photo (`.dw-contact-photo`). That scrim is what
+  keeps the heading legible — the wash animates in and cannot be relied on.
 - Every `auto-fit` grid must wrap its minimum in `min(Npx, 100%)`, i.e.
   `grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))]`. Without the
   `min()` wrapper, tracks overflow on narrow viewports.
@@ -122,6 +124,9 @@ Component classes that don't express well as utilities live in the
 - Below the fold: wrap in `<Reveal delay={n}>`. It shares one
   IntersectionObserver across the page (`src/hooks/useReveal.ts`).
 - Above the fold: `rise(delay)` / `riseSlow(delay)` from `src/lib/motion.ts`.
+- For motion CSS cannot reach — the hero's looping video — use
+  `usePrefersReducedMotion()` (`src/hooks/usePrefersReducedMotion.ts`) and hold
+  the element still. The CSS block alone will not stop a `<video>`.
 - The `prefers-reduced-motion` block at the bottom of `index.css` collapses all
   animation and forces reveals to full opacity. **Do not remove it**, and don't
   add animation that escapes it.
@@ -164,14 +169,22 @@ with real, verifiable content.**
 
 Carried over from the handoff, still open:
 
-1. Newsletter signup is not wired to any provider — it only acknowledges locally
-2. No blog post detail pages; cards without an `href` render as plain cards
-3. Social links are `#` placeholders; the phone number is `[Phone number]`
-4. No `/privacy` or `/terms` pages — the footer links 404
-5. No services detail pages
-6. `og:image` points at `metaimage.jpeg`; a real 1200×630 PNG is still needed
-7. Case-study results and testimonial names are illustrative (see above)
-8. Real-device testing (iOS/Android, landscape phones, <360px) not done
+1. The hero video files (`public/hero-city.mp4`, optionally `.webm`) are not in
+   the repo yet — see `HERO_VIDEO` in `src/data/home.ts` for the encode command.
+   Until they land the hero shows carbon plus its scrim, which looks deliberate
+   but is not the intended design
+2. Newsletter signup is not wired to any provider — it only acknowledges locally
+3. No blog post detail pages; cards without an `href` render as plain cards
+4. Social links are `#` placeholders (the phone number is now real: +234 704
+   295 6599, WhatsApp only — it links to `wa.me`, never `tel:`)
+5. No `/privacy` or `/terms` pages — the footer links 404
+6. No services detail pages
+7. `og:image` points at `metaimage.jpeg`; a real 1200×630 PNG is still needed
+8. Case-study results and testimonial names are illustrative (see above)
+9. Real-device testing not done. Emulated coverage (Chrome DevTools Protocol,
+   2026-09-20) is clean: no horizontal overflow or clipped elements on any page
+   at 320–1920 portrait or 568–926 landscape, and no non-inline control under
+   44px. Real iOS/Android hardware is still untested
 
 The contact form **is** wired — it POSTs to the existing Netlify function
 `/.netlify/functions/send-email` via `src/lib/api-client.ts`, with validation,
