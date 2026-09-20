@@ -17,6 +17,7 @@ export const ICON_PATHS = {
   arrowRight: "M5 12h13 M13 6l6 6-6 6",
   arrowUpRight: "M7 17L17 7 M9 7h8v8",
   chevronDown: "M6 9l6 6 6-6",
+  arrowDown: "M12 4v15 M6 13l6 6 6-6",
   plus: "M12 5v14 M5 12h14",
   check: "M4 12l5 5L20 7",
   mail: "M3 6h18v12H3z M3 7l9 6 9-6",

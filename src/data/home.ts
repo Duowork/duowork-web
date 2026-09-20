@@ -2,6 +2,49 @@ import type { IconName } from "../lib/icon-paths";
 
 /** Content for the Home page sections, in the order they render. */
 
+/**
+ * Hero background: an aerial slow-motion shot of the city we work from.
+ *
+ * Every path here is optional. With none present the hero falls back to carbon
+ * plus the scrim, which still reads as intentional rather than broken.
+ *
+ * This autoplays on every homepage visit, much of it over Nigerian mobile
+ * connections, so weight is felt directly — keep it a short silent loop at
+ * 1080p and under ~3MB. It sits beneath a scrim running 48–94% opacity and is
+ * cropped by `object-cover`, so resolution and bitrate past 1080p buy nothing
+ * a viewer can see. If you replace it:
+ *
+ *   ffmpeg -i source.mov -an -c:v libx264 -crf 28 -preset slow \
+ *          -vf "scale=1920:-2" -movflags +faststart public/hero-city-1080.mp4
+ *
+ *   ffmpeg -y -ss 0 -i public/hero-city-1080.mp4 -frames:v 1 /tmp/f.png \
+ *     && cwebp -q 70 -resize 1600 0 /tmp/f.png -o public/hero-city-poster.webp
+ *
+ * `-an` drops the audio track; `-movflags +faststart` moves the moov atom to
+ * the front, without which the browser must fetch the whole file before the
+ * first frame renders.
+ */
+export const HERO_VIDEO = {
+  /** 1920x1080, H.264, ~2.1 Mbps, 10s, faststart. 2.7MB. */
+  mp4: "/hero-city-1080.mp4",
+  /** Optional: smaller than the mp4 where supported. None encoded yet. */
+  webm: undefined as string | undefined,
+  /**
+   * First frame of the video, so the handoff to playback is seamless. Also the
+   * whole hero image for anyone on reduced motion, who never sees it move.
+   */
+  poster: "/hero-city-poster.webp" as string | undefined,
+};
+
+/** Scrolls right-to-left across the base of the hero. */
+export const HERO_MARQUEE = [
+  "Product design",
+  "Custom platforms",
+  "Internal tools",
+  "Enterprise integration",
+  "Digital consulting",
+];
+
 export type IconCard = {
   title: string;
   body: string;

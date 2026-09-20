@@ -150,11 +150,109 @@
 
   /* The one gradient in the design: a volt wash that sweeps across the contact
      section the first time it enters the viewport. */
+  /* The volt underline on the hero's third headline line.
+     Drawn as a background on the inline text so it follows the text exactly:
+     `box-decoration-break: clone` gives every wrapped line its own bar, which
+     an absolutely positioned element cannot do. Sizes are in em so the bar
+     stays proportional as the headline scales. */
+  .dw-underline {
+    background-image: linear-gradient(var(--color-volt), var(--color-volt));
+    background-repeat: no-repeat;
+    background-position: 0 calc(100% - 0.06em);
+    background-size: 0% 0.14em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    animation: dwUnderlineGrow 600ms var(--ease-standard) 560ms forwards;
+  }
+
+  @keyframes dwUnderlineGrow {
+    to {
+      background-size: 100% 0.14em;
+    }
+  }
+
+  /* Hero scrim over the city footage. Weighted to the base, where the copy
+     sits; the light veil kept at the top stops the aerial shot's bright
+     sky from blowing out behind the floating nav. */
+  .dw-hero-scrim {
+    background: linear-gradient(
+      to top,
+      rgba(34, 34, 34, 0.94) 0%,
+      rgba(34, 34, 34, 0.82) 26%,
+      rgba(34, 34, 34, 0.48) 58%,
+      rgba(34, 34, 34, 0.28) 100%
+    );
+  }
+
+  /* Edges fade rather than cut, so items enter and leave the strip softly. */
+  .dw-hero-marquee {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+  }
+
+  .dw-hero-marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding-right: 24px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.72);
+    white-space: nowrap;
+  }
+
+  /* Volt dot between services. */
+  .dw-hero-marquee-item::after {
+    content: "";
+    flex: none;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-volt);
+  }
+
+  /* Contact background photo, anchored to the left edge and darkened toward
+     carbon on the right so it dissolves into the section rather than ending
+     on a hard edge. The scrim is always on — legibility must not depend on
+     the animated wash above it. */
+  .dw-contact-photo {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(34, 34, 34, 0.62) 0%,
+        rgba(34, 34, 34, 0.8) 40%,
+        rgba(34, 34, 34, 0.95) 72%,
+        var(--color-carbon) 100%
+      ),
+      url("/contact-team.webp");
+    background-size:
+      100% 100%,
+      cover;
+    background-position:
+      left center,
+      left center;
+    background-repeat: no-repeat;
+  }
+
   .dw-wash {
     background: linear-gradient(
-      115deg,
-      rgba(158, 255, 81, 0.22),
-      rgba(158, 255, 81, 0) 60%
+      90deg,
+      rgba(158, 255, 81, 0.42) 0%,
+      rgba(158, 255, 81, 0.12) 30%,
+      rgba(158, 255, 81, 0) 58%
     );
     clip-path: polygon(0 0, 0 0, 0 100%, -20% 100%);
     transition: clip-path 600ms var(--ease-standard);
