@@ -19,6 +19,17 @@ export default function ContactSection() {
       id="contact"
       className="relative overflow-hidden bg-carbon py-[clamp(72px,10vw,140px)] text-white"
     >
+      {/*
+        Background photo, anchored left. It carries its own carbon scrim so the
+        heading stays legible from first paint — the volt wash above it animates
+        in and must never be what makes the text readable.
+      */}
+      <div
+        aria-hidden="true"
+        className="dw-contact-photo absolute inset-y-0 left-0 w-full lg:w-[62%]"
+      />
+
+      {/* Volt-to-carbon wash, left to right, revealed once on scroll. */}
       <div
         ref={washRef}
         aria-hidden="true"
@@ -59,10 +70,15 @@ export default function ContactSection() {
 
             <a
               href={CONTACT.phoneHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex w-fit items-center gap-2.5 text-base transition-colors duration-200 hover:text-volt"
             >
               <Icon name="phone" size={18} />
               {CONTACT.phone}
+              <span className="text-sm text-paper-60">
+                ({CONTACT.phoneNote})
+              </span>
             </a>
 
             <div className="text-sm text-paper-60">{CONTACT.location}</div>

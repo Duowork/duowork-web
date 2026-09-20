@@ -84,8 +84,8 @@ export default function ContactForm() {
         </div>
 
         <p className="m-0 max-w-[40ch] text-base text-paper-70">
-          We'll be in touch within one business day. If it's urgent, call us on
-          the number to the left.
+          We'll be in touch within one business day. If it's urgent, message us on
+          WhatsApp using the number to the left.
         </p>
 
         <button
@@ -112,6 +112,7 @@ export default function ContactForm() {
         <input
           type="text"
           autoComplete="name"
+          placeholder="Your name"
           className="dw-field"
           aria-invalid={Boolean(errors.name)}
           {...register("name", { required: "Tell us who you are." })}
@@ -127,6 +128,7 @@ export default function ContactForm() {
           <input
             type="email"
             autoComplete="email"
+            placeholder="you@company.com"
             className="dw-field"
             aria-invalid={Boolean(errors.email)}
             {...register("email", {
@@ -147,6 +149,7 @@ export default function ContactForm() {
           <input
             type="text"
             autoComplete="organization"
+            placeholder="Your company"
             className="dw-field"
             {...register("company")}
           />

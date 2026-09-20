@@ -22,9 +22,11 @@ export const NAV_LINKS: NavLink[] = [
 
 export const CONTACT = {
   email: "hello@duowork.com",
-  // TODO: real number. The design ships this as an unfilled slot.
-  phone: "[Phone number]",
-  phoneHref: "tel:",
+  phone: "+234 704 295 6599",
+  // WhatsApp only — this line does not take voice calls, so it links to
+  // wa.me rather than tel: to avoid sending people to a dead dial.
+  phoneHref: "https://wa.me/2347042956599",
+  phoneNote: "WhatsApp only",
   location: "Lagos, Nigeria — we reply within one business day.",
 };
 
