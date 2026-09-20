@@ -90,7 +90,9 @@ export default function Blog() {
                 type="button"
                 onClick={() => setFilter(option)}
                 aria-pressed={active}
-                className={`cursor-pointer rounded-full border px-[18px] py-2 text-sm font-medium tracking-[0.02em] text-carbon transition-colors duration-200 hover:bg-hairline-strong ${
+                // min-h-11 keeps the chip on the 44px touch minimum; padding
+                // alone left it at 38px.
+                className={`inline-flex min-h-11 cursor-pointer items-center rounded-full border px-[18px] py-2 text-sm font-medium tracking-[0.02em] text-carbon transition-colors duration-200 hover:bg-hairline-strong ${
                   active
                     ? "border-ink-30 bg-hairline-strong"
                     : "border-hairline-strong bg-transparent"

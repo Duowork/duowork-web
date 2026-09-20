@@ -21,8 +21,11 @@ export default function Industries() {
         <div className="grid">
           {INDUSTRIES.map((industry, index) => (
             <Reveal key={industry.title} delay={index * 80}>
-              <div className="flex items-baseline gap-6 border-t border-hairline-strong py-[26px]">
-                <h3 className="min-w-[160px] font-title text-2xl font-medium">
+              {/* Stacks on phones: side by side, the 160px title column leaves
+                  the description about 130px and it breaks into a ragged
+                  four-line sliver. */}
+              <div className="flex flex-col gap-2 border-t border-hairline-strong py-[26px] sm:flex-row sm:items-baseline sm:gap-6">
+                <h3 className="font-title text-2xl font-medium sm:min-w-[160px]">
                   {industry.title}
                 </h3>
                 <p className="text-base text-ink-60">{industry.body}</p>
