@@ -26,7 +26,7 @@ import type { IconName } from "../lib/icon-paths";
  */
 export const HERO_VIDEO = {
   /** 1920x1080, H.264, ~2.1 Mbps, 10s, faststart. 2.7MB. */
-  mp4: "/hero-city-1080.mp4",
+  mp4: "/hero-city-1080-new.mp4",
   /** Optional: smaller than the mp4 where supported. None encoded yet. */
   webm: undefined as string | undefined,
   /**
@@ -56,12 +56,12 @@ export type IconCard = {
 export const PROBLEMS: IconCard[] = [
   {
     title: "Disconnected Systems",
-    body: "Your CRM, accounting, and inventory tools don't talk to each other, so someone's stuck re-entering the same data three times.",
+    body: "Your CRM, accounting, and inventory tools don't talk to each other, so your team is stuck re-entering the same data three times.",
     icon: "nodes",
   },
   {
     title: "Slow, Off-the-Shelf Fits",
-    body: "Generic software almost works — until it doesn't, and you're paying for features you'll never use.",
+    body: "Generic software almost works until it doesn't, and you're paying for features you'll never use.",
     icon: "puzzle",
   },
   {
@@ -74,19 +74,19 @@ export const PROBLEMS: IconCard[] = [
 export const SERVICES: IconCard[] = [
   {
     title: "Custom Software Development",
-    body: "We design and build software shaped around how your business actually works — not the other way around. Web platforms, internal tools, mobile apps, built from scratch or evolved from what you already have.",
+    body: "We design and build software shaped around how your business actually works, not the other way around. Web platforms, internal tools, mobile apps, built from scratch or evolved from what you already have.",
     icon: "code",
     accent: "carbon",
   },
   {
     title: "Enterprise Integration",
-    body: "ERPs, CRMs, payment systems, third-party APIs — we connect the tools you rely on so information moves automatically, not manually. One ecosystem, not ten disconnected apps.",
+    body: "ERPs, CRMs, payment systems, and third-party APIs. We connect the tools you rely on so information moves automatically, not manually. One ecosystem, not ten disconnected apps.",
     icon: "plug",
     accent: "volt",
   },
   {
     title: "Digital Transformation Consulting",
-    body: "Before we write a line of code, we help you map what “modern” actually means for your business — realistic, sequenced, and built around your team's capacity to adopt it.",
+    body: "Before we write a line of code, we help you map what “modern” actually means for your business — realistic, sequenced, and built around your team's capacity to adopt it – by talking to you and your team.",
     icon: "compass",
     accent: "carbon",
   },
@@ -107,7 +107,7 @@ export const PROCESS: ProcessStep[] = [
   {
     step: 2,
     title: "Design & Build",
-    body: "We architect and build the solution, with you involved at every checkpoint — not just a demo at the end.",
+    body: "We architect and build the solution, with you involved at every checkpoint, not just a demo at the end.",
   },
   {
     step: 3,
@@ -117,7 +117,7 @@ export const PROCESS: ProcessStep[] = [
   {
     step: 4,
     title: "Support & Grow",
-    body: "We stay on as your technical partner — fixing, scaling, and evolving the system as your business grows.",
+    body: "We have an agreement and stay on as your technical partner; fixing, scaling, and evolving the system as your business grows.",
   },
 ];
 
@@ -136,7 +136,7 @@ export const WHY_US: IconCard[] = [
   },
   {
     title: "We Don't Disappear After Launch",
-    body: "Most vendors hand off and move on. We stay — as the team you call when something needs to scale, change, or get fixed.",
+    body: "We won't hand off and move on. We stay — as the team you call when something needs to scale, change, or get fixed. Even when you decide to hand off a different vendor, we stay to put them through",
     icon: "handshake",
     accent: "carbon",
   },
@@ -167,6 +167,7 @@ export const CLIENTS = [
   "Capann",
   "Dema",
   "AvataMedia",
+  "Split"
 ];
 
 export type Testimonial = {
@@ -183,14 +184,14 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
       "Duowork didn't just build what we asked for — they helped us figure out what we actually needed first. That's rare.",
-    name: "[Placeholder Name]",
+    name: "Mustapha Mohammed",
     role: "Founder, Sable & Grey",
-    nameIsIllustrative: true,
+    nameIsIllustrative: false,
   },
   {
     quote:
       "We came in expecting a vendor. We got a team that still checks in months after launch.",
-    name: "[Placeholder Name]",
+    name: "Veronica Abang",
     role: "Operations Lead, AvataMedia",
     nameIsIllustrative: true,
   },
