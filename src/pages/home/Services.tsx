@@ -10,6 +10,7 @@ export default function Services() {
       <SectionHeading
         eyebrow="Our services"
         title="Three ways we help your business run better."
+        tone="dark"
       />
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-x-10 gap-y-12">
@@ -19,7 +20,7 @@ export default function Services() {
               <Icon
                 name={service.icon}
                 size={28}
-                className={service.accent === "volt" ? "text-volt" : "text-carbon"}
+                className={"text-carbon"}
               />
               <h3 className="mt-[22px] mb-3 font-title text-[22px] leading-[1.25] font-medium">
                 {service.title}

@@ -7,7 +7,7 @@ import { WHY_US } from "../../data/home";
 export default function WhyUs() {
   return (
     <Section>
-      <SectionHeading eyebrow="Why us" title="A technical partner, not just a vendor." />
+      <SectionHeading eyebrow="Why us" title="A technical partner, not just a vendor." tone="dark" />
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-6">
         {WHY_US.map((reason, index) => (
@@ -16,7 +16,7 @@ export default function WhyUs() {
               <Icon
                 name={reason.icon}
                 size={28}
-                className={reason.accent === "volt" ? "text-volt" : "text-carbon"}
+                className={"text-carbon"}
               />
               <h3 className="mt-6 mb-3 font-title text-[22px] leading-[1.25] font-medium">
                 {reason.title}

@@ -5,7 +5,7 @@ import Process from "./home/Process";
 import WhyUs from "./home/WhyUs";
 import Industries from "./home/Industries";
 import SelectedWork from "./home/SelectedWork";
-import Testimonials from "./home/Testimonials";
+// import Testimonials from "./home/Testimonials";
 import ContactSection from "./home/ContactSection";
 
 /**
@@ -22,7 +22,7 @@ export default function Home() {
       <WhyUs />
       <Industries />
       <SelectedWork />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <ContactSection />
     </>
   );

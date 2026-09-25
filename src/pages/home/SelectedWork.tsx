@@ -12,7 +12,7 @@ export default function SelectedWork() {
     // Full-bleed so the client strip's hairlines can run the width of the page.
     <Section id="work" fullBleed>
       <Container>
-        <Eyebrow>Our work</Eyebrow>
+        <Eyebrow tone="dark">Our work</Eyebrow>
 
         <div className="mt-6 mb-14 flex flex-wrap items-end justify-between gap-8">
           <h2 className="font-title text-[clamp(28px,3vw,40px)] leading-[1.15] font-semibold tracking-[-0.01em]">

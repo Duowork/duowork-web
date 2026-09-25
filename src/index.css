@@ -214,16 +214,6 @@
     white-space: nowrap;
   }
 
-  /* Volt dot between services. */
-  .dw-hero-marquee-item::after {
-    content: "";
-    flex: none;
-    width: 4px;
-    height: 4px;
-    border-radius: 999px;
-    background: var(--color-volt);
-  }
-
   /* Contact background photo, anchored to the left edge and darkened toward
      carbon on the right so it dissolves into the section rather than ending
      on a hard edge. The scrim is always on — legibility must not depend on

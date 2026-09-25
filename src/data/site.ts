@@ -38,9 +38,9 @@ export type SocialLink = {
 
 // TODO: replace the "#" placeholders with real profile URLs.
 export const SOCIALS: SocialLink[] = [
-  { label: "LinkedIn", href: "#", icon: "linkedin" },
-  { label: "X / Twitter", href: "#", icon: "x" },
-  { label: "Instagram", href: "#", icon: "instagram" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/duowork", icon: "linkedin" },
+  { label: "X / Twitter", href: "https://x.com/@duoworkhq", icon: "x" },
+  { label: "Instagram", href: "https://instagram.com/@duoworkhq", icon: "instagram" },
 ];
 
 export type FooterColumn = {
@@ -76,9 +76,9 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
   {
     heading: "Connect",
     links: [
-      { label: "LinkedIn", to: "#" },
-      { label: "X / Twitter", to: "#" },
-      { label: "Instagram", to: "#" },
+      { label: "LinkedIn", to: "https://linkedin.com/company/duowork"},
+      { label: "X / Twitter", to: "https://x.com/@duoworkhq" },
+      { label: "Instagram", to: "https://instagram.com/@duoworkhq"},
       { label: "Email", to: `mailto:${CONTACT.email}` },
     ],
   },

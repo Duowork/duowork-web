@@ -10,6 +10,7 @@ export default function Problems() {
       <SectionHeading
         eyebrow="The industry dilemma"
         title="Growing a business shouldn't mean fighting your own tools."
+        tone="dark"
       />
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-6">

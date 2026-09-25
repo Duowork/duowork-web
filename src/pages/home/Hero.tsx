@@ -55,9 +55,9 @@ export default function Hero() {
         to the foot by `mt-auto`, so the block spans the section. Bottom-anchoring
         the whole column instead leaves a dead gap under the nav.
       */}
-      <Container className="relative flex flex-1 flex-col pt-[clamp(104px,12vh,148px)] pb-[clamp(24px,4vh,48px)]">
+      <Container className="relative flex flex-col justify-center flex-1 pt-[clamp(104px,12vh,148px)] pb-[clamp(24px,4vh,48px)]">
         <span style={rise(0)} className="inline-block w-fit">
-          <Eyebrow tone="outline">Software Studio · Lagos</Eyebrow>
+          <Eyebrow tone="dark">Software Firm | Abuja</Eyebrow>
         </span>
 
         <h1 className="mt-[clamp(20px,3.5vh,40px)] font-title text-[clamp(38px,5.4vw,72px)] leading-[1.06] font-semibold tracking-[-0.02em]">
@@ -84,7 +84,7 @@ export default function Hero() {
           style={rise(340)}
         >
           Duowork designs, builds, and integrates the software that runs your
-          business — from custom platforms to enterprise systems that finally
+          business. From custom platforms to enterprise systems that
           talk to each other. Rooted in Nigeria. Built to global standard.
         </p>
 
@@ -95,13 +95,14 @@ export default function Hero() {
           <Button to="/#contact" variant="volt" icon="arrowRight">
             Talk to Us
           </Button>
+          
           <Button to="/work" variant="ghost">
             See Our Work
           </Button>
         </div>
 
         <div
-          className="mt-auto flex items-center gap-8 border-t border-white/15 pt-6"
+          className="flex items-center gap-8 border-t border-white/15 pt-6 self-end absolute bottom-5 sm:bottom-10 sm:-right-20"
           style={rise(500)}
         >
           <div className="dw-hero-marquee relative min-w-0 flex-1 overflow-hidden">
@@ -111,6 +112,7 @@ export default function Hero() {
                   {item}
                 </span>
               ))}
+
               {/* Second pass completes the loop; hidden so it is not read twice. */}
               {HERO_MARQUEE.map((item) => (
                 <span
