@@ -2,14 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Duowork</title>
 
-    <!-- Google Fonts -->
+    <title>
+      Duowork — Software studio building engines that understand your business
+    </title>
+    <meta
+      name="description"
+      content="Duowork designs, builds, and integrates the software that runs your business — custom platforms, internal tools, and enterprise systems that finally talk to each other. Rooted in Nigeria. Built to global standard."
+    />
+    <meta
+      name="keywords"
+      content="custom-software-solution, enterprise-integration, abuja-website-agency, duowork-software-solutions, custom-software, tailor-made-software."
+    />
+    <meta
+      name="author"
+      content="Duowork Software Solutions, Romeo Agbor Peter"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.duowork.tech/" />
+
+    <link rel="icon" type="image/svg+xml" href="/duowork-mark-volt.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+
+    <!-- Fonts: IBM Plex Sans for headings/numerals, Poppins for body/UI -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&family=Archivo+Black&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- PWA -->
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -23,53 +45,56 @@
     <meta name="apple-mobile-web-app-title" content="Duowork" />
     <link rel="apple-touch-icon" href="/icon-192.png" />
 
-    <!-- Google Meta Tags -->
-    <meta name="description" content="We help businesses automate and scale their business vision to the top." />
+    <!-- Open Graph -->
+    <!-- TODO: og:image should be a real 1200x630 PNG. metaimage.jpeg is a stopgap;
+         an SVG mark will not render on LinkedIn or X. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.duowork.tech/" />
+    <meta property="og:site_name" content="Duowork" />
     <meta
-      name="keywords"
-      content="custom-software-solution, abuja-website-agency, duowork-software-solutions, custom-software, tailor-made-software."
+      property="og:title"
+      content="Duowork — We build engines that understand your business"
     />
-    <meta name="author" content="Duowork software solutions, Romeo Peter" />
-    <meta name="robots" content="index, follow" />
+    <meta
+      property="og:description"
+      content="Custom platforms, internal tools, and enterprise integrations. Rooted in Nigeria. Built to global standard."
+    />
+    <meta
+      property="og:image"
+      content="https://www.duowork.tech/metaimage.jpeg"
+    />
 
-    <!-- Twitter Meta Tags -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@duoworkhq" />
-    <meta name="twitter:title" content="Duowork Software Solutions" />
-    <meta name="twitter:description" content="We help businesses automate and scale their business vision to the top." />
-    <meta name="twitter:image" content="https://www.duowork.tech/metaimage.jpeg" />
-
-    <!-- Facebook Open Graph Meta Tags -->
-    <meta property="og:title" content="Duowork Software Solutions" />
-    <meta property="og:description" content="We help businesses automate and scale their business vision to the top." />
-    <meta property="og:image" content="https://www.duowork.tech/metaimage.jpeg" />
-    <meta property="og:url" content="https://www.duowork.tech" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Duowork Software Solutions" />
+    <meta
+      name="twitter:title"
+      content="Duowork — We build engines that understand your business"
+    />
+    <meta
+      name="twitter:description"
+      content="Custom platforms, internal tools, and enterprise integrations. Rooted in Nigeria. Built to global standard."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.duowork.tech/metaimage.jpeg"
+    />
 
     <!-- GitHub Pages SPA routing: restore path from redirect -->
     <script>
-      (function() {
+      (function () {
         var p = window.location.search.match(/[?&]p=([^&]*)/);
         if (p) {
-          window.history.replaceState(null, null, decodeURIComponent(p[1]) + window.location.hash);
+          window.history.replaceState(
+            null,
+            null,
+            decodeURIComponent(p[1]) + window.location.hash,
+          );
         }
       })();
     </script>
-
-    <!-- Service Worker Registration -->
-    <!-- <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("/sw.js")
-            .then((reg) => console.log("[SW] Registered:", reg.scope))
-            .catch((err) => console.warn("[SW] Registration failed:", err));
-        });
-      }
-    </script> -->
-    <script type="module" crossorigin src="/assets/index-Do4audxQ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CpQnCpmN.css">
+    <script type="module" crossorigin src="/assets/index-DfgD-RlM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CW-Um_JM.css">
   </head>
   <body>
     <div id="root"></div>
