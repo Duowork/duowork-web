@@ -63,7 +63,7 @@ export default function Hero() {
         to the foot by `mt-auto`, so the block spans the section. Bottom-anchoring
         the whole column instead leaves a dead gap under the nav.
       */}
-      <Container className="relative flex flex-col justify-center flex-1 pt-[clamp(104px,12vh,148px)] pb-[clamp(24px,4vh,48px)]">
+      <Container className="relative flex flex-col justify-center flex-1 pt-[clamp(104px,12vh,148px)] pb-[112px] sm:pb-[clamp(24px,4vh,48px)]">
         <span style={rise(0)} className="inline-block w-fit">
           <Eyebrow tone="dark">Software Firm | Abuja</Eyebrow>
         </span>

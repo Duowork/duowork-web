@@ -273,6 +273,16 @@
     background-repeat: no-repeat;
   }
 
+  /* Below lg the photo spans the full width, so it is centred behind the
+     content instead of cropping from the left edge. */
+  @media (max-width: 1023.98px) {
+    .dw-contact-photo {
+      background-position:
+        left center,
+        center center;
+    }
+  }
+
   .dw-wash {
     background: linear-gradient(
       90deg,

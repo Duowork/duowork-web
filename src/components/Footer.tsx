@@ -94,10 +94,12 @@ export default function Footer() {
         </div>
       </Container>
 
-      {/* Oversized wordmark, cropped by the footer's overflow. */}
-      <div className="relative h-[130px]" aria-hidden="true">
+      {/* Oversized wordmark, cropped by the footer's overflow. The crop is
+          shallower on phones, where the fixed 34px cut would take half the
+          letters at the small fluid size. */}
+      <div className="relative h-[104px] sm:h-[130px]" aria-hidden="true">
         <div
-          className="absolute -bottom-[34px] left-1/2 -translate-x-1/2 font-title font-bold whitespace-nowrap"
+          className="absolute -bottom-3 left-1/2 -translate-x-1/2 font-title font-bold whitespace-nowrap sm:-bottom-[34px]"
           style={{
             fontSize: "clamp(80px, 21vw, 300px)",
             lineHeight: 0.85,
