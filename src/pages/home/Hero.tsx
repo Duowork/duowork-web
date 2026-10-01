@@ -7,6 +7,14 @@ import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import { rise } from "../../lib/motion";
 import { HERO_MARQUEE, HERO_VIDEO } from "../../data/home";
 
+/*
+ * One loop half: the 5-item list repeated 3x. A single copy (~800px) is
+ * narrower than the strip's viewport on desktop, so a two-copy track wraps
+ * while the viewport is half empty — the visible gap. Each half must exceed
+ * the viewport width for the -50% loop to read as continuous.
+ */
+const MARQUEE_HALF = [...HERO_MARQUEE, ...HERO_MARQUEE, ...HERO_MARQUEE];
+
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const reducedMotion = usePrefersReducedMotion();
@@ -102,26 +110,27 @@ export default function Hero() {
         </div>
 
         <div
-          className="flex items-center gap-8 border-t border-white/15 pt-6 self-end absolute bottom-5 sm:bottom-10 sm:-right-20"
+          className="dw-hero-strip flex items-center gap-8 border-t border-white/15 pt-6 absolute bottom-5 sm:bottom-10 sm:pr-20"
           style={rise(500)}
         >
           <div className="dw-hero-marquee relative min-w-0 flex-1 overflow-hidden">
             <div className="flex w-max animate-[dwMarquee_32s_linear_infinite]">
-              {HERO_MARQUEE.map((item) => (
-                <span key={item} className="dw-hero-marquee-item">
-                  {item}
-                </span>
-              ))}
-
-              {/* Second pass completes the loop; hidden so it is not read twice. */}
-              {HERO_MARQUEE.map((item) => (
-                <span
-                  key={`${item}-loop`}
-                  className="dw-hero-marquee-item"
-                  aria-hidden="true"
+              {/* Two identical halves; the track translates -50% per loop. */}
+              {[0, 1].map((half) => (
+                <div
+                  key={half}
+                  className="flex shrink-0"
+                  aria-hidden={half === 1 || undefined}
                 >
-                  {item}
-                </span>
+                  {MARQUEE_HALF.map((item, index) => (
+                    <span
+                      key={`${half}-${index}`}
+                      className="dw-hero-marquee-item"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               ))}
             </div>
           </div>

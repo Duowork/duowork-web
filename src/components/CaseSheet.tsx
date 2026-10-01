@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 import IllustrativeBadge from "./IllustrativeBadge";
 import type { CaseStudy } from "../data/cases";
@@ -10,6 +10,9 @@ type CaseSheetProps = {
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+/** Mirrors the dwSheetUp entrance so open and close run the same curve. */
+const SHEET_EXIT_MS = 320;
 
 function Passage({ label, body }: { label: string; body: string }) {
   return (
@@ -23,9 +26,13 @@ function Passage({ label, body }: { label: string; body: string }) {
 }
 
 /**
- * The bottom sheet: covers the lower 75% of the viewport so the page behind
- * stays visible. Escape closes it, focus moves to the close control on open,
- * and Tab is confined to the sheet while it is up.
+ * The case-study sheet. A bottom sheet covering the lower 75% on phones, a
+ * fullscreen overlay from md (tablet) up so the content has room to breathe.
+ *
+ * Closing plays the entrance in reverse (sheet slides down, veil fades) and
+ * unmounts only once it finishes — unmounting immediately is what made close
+ * snap shut with no transition. Escape, the veil, and both close controls
+ * all go through the same deferred close.
  *
  * Returning focus to the card that opened it is the grid's job, not this
  * component's — see CaseGrid.
@@ -33,10 +40,26 @@ function Passage({ label, body }: { label: string; body: string }) {
 export default function CaseSheet({ study, onClose }: CaseSheetProps) {
   const sheetRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dismissRef = useRef<HTMLButtonElement>(null);
+  const [closing, setClosing] = useState(false);
+  const closingRef = useRef(false);
+  const timerRef = useRef<number | undefined>(undefined);
 
-  // Focus the close control once the sheet is in the DOM.
+  const requestClose = useCallback(() => {
+    if (closingRef.current) return;
+    closingRef.current = true;
+    setClosing(true);
+    timerRef.current = window.setTimeout(onClose, SHEET_EXIT_MS);
+  }, [onClose]);
+
+  useEffect(() => () => window.clearTimeout(timerRef.current), []);
+
+  // Focus whichever close control is visible at this viewport.
   useEffect(() => {
-    const frame = requestAnimationFrame(() => closeRef.current?.focus());
+    const frame = requestAnimationFrame(() => {
+      const desktop = window.matchMedia("(min-width: 768px)").matches;
+      (desktop ? dismissRef.current : closeRef.current)?.focus();
+    });
     return () => cancelAnimationFrame(frame);
   }, []);
 
@@ -45,7 +68,7 @@ export default function CaseSheet({ study, onClose }: CaseSheetProps) {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        onClose();
+        requestClose();
         return;
       }
 
@@ -71,7 +94,7 @@ export default function CaseSheet({ study, onClose }: CaseSheetProps) {
 
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [onClose]);
+  }, [requestClose]);
 
   // Hold the page still behind the sheet.
   useEffect(() => {
@@ -85,8 +108,12 @@ export default function CaseSheet({ study, onClose }: CaseSheetProps) {
   return (
     <>
       <div
-        onClick={onClose}
-        className="fixed inset-0 z-90 animate-[dwVeil_200ms_ease-out_both] bg-veil"
+        onClick={requestClose}
+        className={
+          closing
+            ? "fixed inset-0 z-90 animate-[dwVeilOut_200ms_ease-out_both] bg-veil"
+            : "fixed inset-0 z-90 animate-[dwVeil_200ms_ease-out_both] bg-veil"
+        }
       />
 
       <div
@@ -94,20 +121,39 @@ export default function CaseSheet({ study, onClose }: CaseSheetProps) {
         role="dialog"
         aria-modal="true"
         aria-label={`${study.client} case study`}
-        className="fixed right-0 bottom-0 left-0 z-91 flex h-[75vh] flex-col rounded-t-3xl bg-white shadow-sheet animate-[dwSheetUp_320ms_cubic-bezier(0.16,1,0.3,1)_both]"
+        className={
+          closing
+            ? "fixed right-0 bottom-0 left-0 z-91 flex h-[75vh] flex-col rounded-t-3xl bg-white shadow-sheet animate-[dwSheetDown_320ms_cubic-bezier(0.16,1,0.3,1)_both] md:inset-0 md:h-auto md:rounded-none"
+            : "fixed right-0 bottom-0 left-0 z-91 flex h-[75vh] flex-col rounded-t-3xl bg-white shadow-sheet animate-[dwSheetUp_320ms_cubic-bezier(0.16,1,0.3,1)_both] md:inset-0 md:h-auto md:rounded-none"
+        }
       >
-        {/* A downward chevron reads as "push this back down". */}
+        {/* A downward chevron reads as "push this back down" — phones only. */}
         <button
           ref={closeRef}
           type="button"
-          onClick={onClose}
+          onClick={requestClose}
           aria-label="Close case study"
-          className="flex w-full cursor-pointer justify-center bg-transparent pt-4 pb-2 text-ink-60 transition-colors duration-200 hover:text-carbon"
+          className="flex w-full cursor-pointer justify-center bg-transparent pt-4 pb-2 text-ink-60 transition-colors duration-200 hover:text-carbon md:hidden"
         >
           <Icon name="chevronDown" size={26} strokeWidth={1.8} />
         </button>
 
-        <div className="flex-1 overflow-y-auto px-6 pt-2 pb-14">
+        {/* Corners need the dismiss control on a fullscreen sheet. */}
+        <button
+          ref={dismissRef}
+          type="button"
+          onClick={requestClose}
+          aria-label="Close case study"
+          className="absolute top-4 right-4 hidden size-11 cursor-pointer items-center justify-center rounded-full bg-transparent text-ink-60 transition-colors duration-200 hover:text-carbon md:flex"
+        >
+          <Icon name="close" size={24} strokeWidth={1.8} />
+        </button>
+
+        {/* Top clearance matches the floating nav (top-6 + ~68px tall) so
+            sheet content never slides underneath it on the fullscreen
+            layout. min-h-0 lets this region shrink and scroll once content
+            outgrows it instead of pushing past the sheet. */}
+        <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-2 pb-14 md:pt-[200px]">
           <div className="mx-auto max-w-[720px]">
             <span className="inline-block rounded-full bg-volt-tint px-3.5 py-[5px] text-[13px] font-medium text-carbon">
               {study.category}

@@ -26,14 +26,14 @@ import type { IconName } from "../lib/icon-paths";
  */
 export const HERO_VIDEO = {
   /** 1920x1080, H.264, ~2.1 Mbps, 10s, faststart. 2.7MB. */
-  mp4: "/hero-city-1080-new.mp4",
+  mp4: "/highway-1080.mp4",
   /** Optional: smaller than the mp4 where supported. None encoded yet. */
   webm: undefined as string | undefined,
   /**
    * First frame of the video, so the handoff to playback is seamless. Also the
    * whole hero image for anyone on reduced motion, who never sees it move.
    */
-  poster: "/hero-city-poster.webp" as string | undefined,
+  poster: "/highway-poster.webp" as string | undefined,
 };
 
 /** Scrolls right-to-left across the base of the hero. */
@@ -167,7 +167,7 @@ export const CLIENTS = [
   "Capann",
   "Dema",
   "AvataMedia",
-  "Split"
+  "Split",
 ];
 
 export type Testimonial = {

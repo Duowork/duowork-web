@@ -4,7 +4,7 @@ import Container from "../../components/Container";
 import Eyebrow from "../../components/Eyebrow";
 import Icon from "../../components/Icon";
 import CaseGrid from "../../components/CaseGrid";
-import Marquee from "./Marquee";
+// import Marquee from "./Marquee";
 import { CASES } from "../../data/cases";
 
 export default function SelectedWork() {
@@ -31,7 +31,8 @@ export default function SelectedWork() {
         <CaseGrid cases={CASES} />
       </Container>
 
-      <Marquee />
+      {/* Commentout for future use */}
+      {/* <Marquee /> */}
     </Section>
   );
 }

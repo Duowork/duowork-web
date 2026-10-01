@@ -94,12 +94,30 @@
   }
 }
 
+@keyframes dwVeilOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes dwSheetUp {
   from {
     transform: translateY(100%);
   }
   to {
     transform: none;
+  }
+}
+
+@keyframes dwSheetDown {
+  from {
+    transform: none;
+  }
+  to {
+    transform: translateY(100%);
   }
 }
 
@@ -182,6 +200,24 @@
       rgba(34, 34, 34, 0.48) 58%,
       rgba(34, 34, 34, 0.28) 100%
     );
+  }
+
+  /* Hero bottom strip: absolutely positioned against the section with a
+     bleed past the container on the right. Both edges are pinned so its
+     width is the on-screen strip — never shrink-to-fit around the marquee
+     track, whose full doubled width would otherwise shove the strip's left
+     edge off-screen and drag the content out of view mid-loop. Left matches
+     the container's content edge: centred 1280px measure plus 24px gutter. */
+  .dw-hero-strip {
+    left: 1.5rem;
+    right: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .dw-hero-strip {
+      left: max(1.5rem, calc((100% - 80rem) / 2 + 1.5rem));
+      right: -5rem;
+    }
   }
 
   /* Edges fade rather than cut, so items enter and leave the strip softly. */

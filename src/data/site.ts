@@ -16,8 +16,9 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Home", to: "/" },
   { label: "Services", to: "/#services" },
   { label: "Work", to: "/work" },
-  { label: "About", to: "/about" },
-  { label: "Blog", to: "/blog" },
+  // In progress — restore when the pages are ready.
+  // { label: "About", to: "/about" },
+  // { label: "Blog", to: "/blog" },
 ];
 
 export const CONTACT = {
@@ -61,7 +62,8 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
   {
     heading: "Resources",
     links: [
-      { label: "Blog", to: "/blog" },
+      // In progress — restore when the page is ready.
+      // { label: "Blog", to: "/blog" },
       { label: "Case Studies", to: "/work" },
     ],
   },

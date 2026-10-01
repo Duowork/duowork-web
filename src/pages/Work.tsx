@@ -27,8 +27,9 @@ export default function Work() {
             style={rise(160)}
           >
             Custom platforms, internal tools, and integrations built for teams
-            across real estate, media, fintech, and productivity. Tap any project
-            for the full challenge, solution, and result.
+            across events, e-commerce, real estate, media, and developer
+            tools. Tap any project for the full challenge, solution, and
+            result.
           </p>
         </Container>
       </section>

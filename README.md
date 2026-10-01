@@ -4,8 +4,9 @@ The marketing site for [Duowork](https://www.duowork.tech), a Nigerian software
 studio building custom platforms, internal tools, and enterprise integrations.
 
 The site's job is to establish credibility and drive discovery-call bookings.
-Its centrepiece is the case-study grid: compact cards that expand into a bottom
-sheet covering the lower 75% of the viewport.
+Its centrepiece is the case-study grid: compact cards that expand into a
+bottom sheet covering the lower 75% of the viewport on phones and a
+fullscreen overlay from tablet up.
 
 ## Pages
 

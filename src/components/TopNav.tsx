@@ -39,7 +39,7 @@ export default function TopNav() {
       className={`fixed top-6 left-1/2 z-100 flex -translate-x-1/2 items-center gap-2 rounded-full py-2 pr-2 pl-5 transition-[background-color,box-shadow] duration-300 ${
         scrolled
           ? "bg-white/70 shadow-nav backdrop-blur-lg"
-          : "bg-transparent"
+          : "bg-white/70"
       }`}
       aria-label="Primary"
     >
@@ -54,7 +54,7 @@ export default function TopNav() {
           alt=""
           className="block h-6.5 w-auto"
         />
-        <span className="font-title text-[17px] font-semibold text-carbon">
+        <span className="font-title text-[17px] font-semibold text-carbon hidden sm:inline-block">
           Duowork
         </span>
       </Link>

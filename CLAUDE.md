@@ -138,12 +138,15 @@ Component classes that don't express well as utilities live in the
 The case-study bottom sheet (`components/CaseSheet.tsx`) is the sensitive one:
 
 - Escape closes it
-- Focus moves to the close button on open
+- Focus moves to the close button on open (chevron on phones, X on md and up)
+- Closing plays the entrance in reverse before unmounting — same 320ms
+  ease-sheet curve, never a snap
 - Focus returns to the opening card on close — coordinated by `CaseGrid`, since
   neither card nor sheet can do it alone
 - `role="dialog"`, `aria-modal="true"`, `aria-label`
 - Tab is trapped inside the sheet
-- The downward chevron is the close affordance — it reads as "push this back down"
+- The downward chevron (phones) or X button (tablet and up) is the close
+  affordance — the chevron reads as "push this back down"
 
 Form controls remove the default outline, so the **volt focus border on
 `.dw-field` is the only focus indicator**. Never remove both.
