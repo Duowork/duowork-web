@@ -26,7 +26,8 @@ export default function TopNav() {
   const isActive = (to: string) => {
     // Anchors on Home never take the active state — only page links do.
     if (to.includes("#")) return false;
-    return pathname === to;
+    // Sections with sub-pages stay active on them, as does a trailing slash.
+    return to === "/" ? pathname === to : pathname.startsWith(to);
   };
 
   const linkClass = (to: string) =>

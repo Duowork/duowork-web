@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
 import Icon from "../../components/Icon";
 import Spinner from "../../components/Spinner";
 import { apiClient } from "../../lib/api-client";
 import { NEED_OPTIONS } from "../../data/home";
+import { CONTACT_FORM_NOTICE } from "../../data/legal";
 
 type ContactFields = {
   name: string;
@@ -197,7 +199,7 @@ export default function ContactForm() {
 
       {failed && (
         <p role="alert" className="m-0 text-sm text-alert">
-          That didn't send. Try again, or email us directly at hello@duowork.com.
+          That didn't send. Try again, or email us directly at hello@duowork.tech.
         </p>
       )}
 
@@ -215,6 +217,14 @@ export default function ContactForm() {
           )}
         </span>
       </button>
+
+      <p className="m-0 text-[13px] text-paper-70">
+        {CONTACT_FORM_NOTICE.before}
+        <Link to={CONTACT_FORM_NOTICE.to} className="underline underline-offset-3 hover:text-volt">
+          {CONTACT_FORM_NOTICE.link}
+        </Link>
+        .
+      </p>
     </form>
   );
 }

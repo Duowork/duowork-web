@@ -18,6 +18,8 @@ type CommonProps = {
   variant?: ButtonVariant;
   /** Renders a filled circle holding this icon on the trailing edge. */
   icon?: IconName;
+  /** Any other icon for that circle, for callers using a different icon set. */
+  iconNode?: React.ReactNode;
   iconSize?: number;
   className?: string;
 };
@@ -62,6 +64,7 @@ export default function Button({
   children,
   variant = "primary",
   icon,
+  iconNode,
   iconSize = 26,
   className = "",
   to,
@@ -73,19 +76,22 @@ export default function Button({
   rel,
   ...rest
 }: ButtonProps) {
-  const classes = [BASE, padding(Boolean(icon)), VARIANTS[variant], className]
+  const classes = [BASE, padding(Boolean(icon || iconNode)), VARIANTS[variant], className]
     .filter(Boolean)
     .join(" ");
 
   const content = (
     <>
       {children}
-      {icon && (
+      {(icon || iconNode) && (
         <span
           className={`inline-flex shrink-0 items-center justify-center rounded-full ${CIRCLES[variant]}`}
           style={{ width: iconSize, height: iconSize }}
         >
-          <Icon name={icon} size={Math.round(iconSize * 0.54)} strokeWidth={2.4} />
+          {iconNode ??
+            (icon && (
+              <Icon name={icon} size={Math.round(iconSize * 0.54)} strokeWidth={2.4} />
+            ))}
         </span>
       )}
     </>

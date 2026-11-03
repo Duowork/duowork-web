@@ -4,8 +4,9 @@ Guidance for Claude Code when working in this repository.
 
 ## What this is
 
-The Duowork marketing website — a four-page static React SPA whose job is to
-establish credibility and drive discovery-call bookings. Duowork is a Nigerian
+The Duowork marketing website — a static React SPA whose job is to establish
+credibility and drive discovery-call bookings. It also hosts Duowork Tools, free
+business utilities under `/tools` (see below). Duowork is a Nigerian
 software studio building custom platforms, internal tools, and enterprise
 integrations.
 
@@ -18,6 +19,7 @@ Pages: **Home** (`/`), **Work** (`/work`), **About** (`/about`), **Blog**
 npm run dev      # Vite dev server
 npm run build    # tsc -b && vite build
 npm run lint     # eslint (must pass clean — CI-equivalent gate)
+npm test         # vitest: tool calculations, PDFs and user journeys
 npm run preview  # serve the production build
 npm run deploy   # publish dist/ to gh-pages
 ```
@@ -67,6 +69,8 @@ src/
     cases.ts     The five case studies
     home.ts      Home section content + contact form select options
     about.ts     Story, mission, vision, values
+    legal.ts     Privacy Policy and Terms
+    tools.ts     Duowork Tools registry, copy and page metadata
     blog.ts      Filters, featured post, post list
   components/    Shared UI used across pages
   hooks/         useReveal (one shared IntersectionObserver)
@@ -151,6 +155,49 @@ The case-study bottom sheet (`components/CaseSheet.tsx`) is the sensitive one:
 Form controls remove the default outline, so the **volt focus border on
 `.dw-field` is the only focus indicator**. Never remove both.
 
+## Duowork Tools
+
+Ten small utilities under `/tools`, built in phases on `duo-2.0-features`.
+**`DUOWORK-TOOLS.md` is the tracker and the brief: read its status section before
+working on a tool, and update it whenever a phase or tool changes state.** Don't
+merge this work to `main` without Romeo's say-so; launch is on hold (see below). The file is
+gitignored, so treat it as a local reference and don't assume a fresh clone has it.
+
+Everything runs in the browser; no tool sends what's typed to a server. `src/data/tools.ts` is the registry. A tool is linked from the
+directory only once its `live` flag is true and its route exists in `App.tsx`.
+
+- **Logic is separate from UI.** `src/lib/tools/` holds pure calculation and
+  view-building code with tests beside it. Money is integer minor units, with
+  BigInt for multiplication. Never do money arithmetic with floats.
+- **Icons are Phosphor** (`@phosphor-icons/react`) in tools code. The rest of the
+  site still uses `components/Icon`.
+- **The work area is carbon** (`components/tools/Workbench.tsx`), which is why
+  tool forms can use `.dw-field` as is. Keep form panels off grey: the two
+  background rule applies here too.
+- **Preview and PDF share one view model.** `DocumentPaper` and `DocumentPdf`
+  (likewise `ReceiptPaper` and `ReceiptPdf`) both render the output of
+  `buildDocumentView`. A layout change has to be made in both.
+- **PDF type is IBM Plex Sans, never Poppins.** Poppins has no ₦ glyph, and a PDF
+  drops missing glyphs silently. Plex lacks Yoruba's Ṣ and Hausa's hooked letters,
+  so `NotoSansNigerian-*.ttf` (a subset of Noto Sans) supplies them per letter.
+  `pdf/safe-text.ts` removes anything the fonts can't draw and the page tells the
+  visitor; a test checks that list against the font files.
+- **Static pages.** `scripts/static-tool-routes.ts` writes a real HTML file for
+  each live tool at build time, so direct visits return 200 with the tool's own
+  metadata rather than going through `404.html`.
+- **Tax and payroll figures are never assumed.** Rates are entered by the user.
+  Verify any preset against official guidance first, and show its effective date.
+
+## Privacy and Terms
+
+`/privacy` and `/terms` render `src/data/legal.ts` through `components/LegalPage`.
+They describe what the site really does: no cookies or analytics, tool data stays
+in the browser, and form data goes through Netlify. **Adding analytics, a live
+newsletter, a form or a provider makes them untrue, so update `legal.ts` in the
+same change.** The Terms cite their own section numbers, so a test pins those; if
+sections move, fix the wording too. The text still needs legal review before
+launch (tracked in `DUOWORK-TOOLS.md`).
+
 ## Placeholder and illustrative content
 
 The site is not yet carrying real proof, and that is tracked in the data rather
@@ -172,19 +219,14 @@ with real, verifiable content.**
 
 Carried over from the handoff, still open:
 
-1. The hero video files (`public/hero-city.mp4`, optionally `.webm`) are not in
-   the repo yet — see `HERO_VIDEO` in `src/data/home.ts` for the encode command.
-   Until they land the hero shows carbon plus its scrim, which looks deliberate
-   but is not the intended design
-2. Newsletter signup is not wired to any provider — it only acknowledges locally
-3. No blog post detail pages; cards without an `href` render as plain cards
-4. Social links are `#` placeholders (the phone number is now real: +234 704
+1. Newsletter signup is not wired to any provider — it only acknowledges locally
+2. No blog post detail pages; cards without an `href` render as plain cards
+3. Social links are `#` placeholders (the phone number is now real: +234 704
    295 6599, WhatsApp only — it links to `wa.me`, never `tel:`)
-5. No `/privacy` or `/terms` pages — the footer links 404
-6. No services detail pages
-7. `og:image` points at `metaimage.jpeg`; a real 1200×630 PNG is still needed
-8. Case-study results and testimonial names are illustrative (see above)
-9. Real-device testing not done. Emulated coverage (Chrome DevTools Protocol,
+4. No services detail pages
+5. `og:image` points at `metaimage.jpeg`; a real 1200×630 PNG is still needed
+6. Case-study results and testimonial names are illustrative (see above)
+7. Real-device testing not done. Emulated coverage (Chrome DevTools Protocol,
    2026-09-20) is clean: no horizontal overflow or clipped elements on any page
    at 320–1920 portrait or 568–926 landscape, and no non-inline control under
    44px. Real iOS/Android hardware is still untested

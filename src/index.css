@@ -332,6 +332,24 @@
     appearance: none;
   }
 
+  /* Native date controls draw their own icon; dark keeps it visible on carbon. */
+  input[type="date"].dw-field {
+    color-scheme: dark;
+  }
+
+  /* The tools directory's search, larger and with room for its icon. */
+  .dw-field-search {
+    min-height: 60px;
+    padding-left: 54px;
+    border-radius: 999px;
+    font-size: 16px;
+    text-overflow: ellipsis;
+  }
+
+  .dw-field-search::placeholder {
+    text-overflow: ellipsis;
+  }
+
   /* Native dropdown lists render on the OS surface, not on carbon. */
   select.dw-field option {
     color: #222222;
@@ -359,6 +377,44 @@
   .dw-reveal[data-revealed="true"] {
     animation: var(--animate-rise);
     animation-delay: var(--dw-reveal-delay, 0ms);
+  }
+}
+
+/* Printing a tool leaves the paper alone on the page. `.dw-no-print` removes
+   the surroundings; `.dw-print-reset` flattens the desk the paper sits on. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  body:has(.dw-paper) nav,
+  body:has(.dw-paper) footer,
+  .dw-no-print {
+    display: none !important;
+  }
+
+  .dw-print-reset {
+    display: block !important;
+    position: static !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    background: #ffffff !important;
+  }
+
+  .dw-paper {
+    box-shadow: none !important;
+    padding: 0 !important;
+    font-size: 11pt;
+  }
+
+  /* Browsers drop backgrounds by default, which would leave white on white. */
+  .dw-paper-total {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 

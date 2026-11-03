@@ -16,19 +16,20 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Home", to: "/" },
   { label: "Services", to: "/#services" },
   { label: "Work", to: "/work" },
+  { label: "Tools", to: "/tools" },
   // In progress — restore when the pages are ready.
   // { label: "About", to: "/about" },
   // { label: "Blog", to: "/blog" },
 ];
 
 export const CONTACT = {
-  email: "hello@duowork.com",
+  email: "hello@duowork.tech",
   phone: "+234 704 295 6599",
   // WhatsApp only — this line does not take voice calls, so it links to
   // wa.me rather than tel: to avoid sending people to a dead dial.
   phoneHref: "https://wa.me/2347042956599",
   phoneNote: "WhatsApp only",
-  location: "Lagos, Nigeria — we reply within one business day.",
+  location: "Abuja, Nigeria — we reply within one business day.",
 };
 
 export type SocialLink = {
@@ -69,7 +70,6 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
   },
   {
     heading: "Legal",
-    // TODO: neither page exists yet — see Known Gaps in the handoff.
     links: [
       { label: "Privacy Policy", to: "/privacy" },
       { label: "Terms", to: "/terms" },
