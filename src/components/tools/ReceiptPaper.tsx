@@ -1,4 +1,5 @@
 import type { ReceiptView } from "../../lib/tools/receipt";
+import DuoworkLockup from "./DuoworkLockup";
 
 const LABEL = "text-[11px] font-medium tracking-[0.02em] text-ink-60";
 
@@ -56,6 +57,10 @@ export default function ReceiptPaper({ view }: { view: ReceiptView }) {
             {view.notes}
           </p>
         )}
+
+        <div className="mt-5 flex justify-end">
+          <DuoworkLockup className="w-[64px]" />
+        </div>
       </article>
     );
   }
@@ -126,6 +131,10 @@ export default function ReceiptPaper({ view }: { view: ReceiptView }) {
             <p className="m-0 whitespace-pre-line text-ink-60">{view.notes}</p>
           </div>
         )}
+
+        <div className="mt-8 flex justify-end">
+          <DuoworkLockup className="w-[84px]" />
+        </div>
       </article>
     </div>
   );

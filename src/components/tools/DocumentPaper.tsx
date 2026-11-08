@@ -1,4 +1,5 @@
 import type { DocumentView } from "../../lib/tools/document";
+import DuoworkLockup from "./DuoworkLockup";
 
 const LABEL = "text-[11px] font-medium tracking-[0.02em] text-ink-60";
 
@@ -130,6 +131,10 @@ export default function DocumentPaper({ view }: { view: DocumentView }) {
         {view.footnote && (
           <p className="mt-6 mb-0 text-[11px] text-ink-60">{view.footnote}</p>
         )}
+
+        <div className="mt-8 flex justify-end">
+          <DuoworkLockup className="w-[84px]" />
+        </div>
       </article>
     </div>
   );

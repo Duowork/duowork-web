@@ -53,3 +53,37 @@ export async function readLogo(file: File): Promise<string> {
 
   return canvas.toDataURL("image/png");
 }
+
+/**
+ * Draws a QR grid onto a canvas, square by square, so the PNG is pixel-sharp at
+ * any size. At least 1000px across, which prints cleanly at about 8cm.
+ */
+export function qrPngBlob(
+  matrix: boolean[][],
+  colours: { dark: string; light: string },
+  quietZone: number,
+): Promise<Blob> {
+  const modules = matrix.length + quietZone * 2;
+  const scale = Math.max(8, Math.ceil(1000 / modules));
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = modules * scale;
+
+  const context = canvas.getContext("2d");
+  if (!context) return Promise.reject(new Error("Your browser couldn't draw the image."));
+
+  context.fillStyle = colours.light;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = colours.dark;
+  matrix.forEach((row, y) =>
+    row.forEach((dark, x) => {
+      if (dark) context.fillRect((x + quietZone) * scale, (y + quietZone) * scale, scale, scale);
+    }),
+  );
+
+  return new Promise((resolve, reject) =>
+    canvas.toBlob(
+      (blob) => (blob ? resolve(blob) : reject(new Error("Your browser couldn't create the image."))),
+      "image/png",
+    ),
+  );
+}

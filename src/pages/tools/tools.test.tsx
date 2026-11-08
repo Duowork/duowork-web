@@ -5,7 +5,10 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { SITE_META, TOOLS, relatedTools, searchTools } from "../../data/tools";
 import InvoiceGenerator from "./InvoiceGenerator";
 import QuotationGenerator from "./QuotationGenerator";
+import ProfitMarginCalculator from "./ProfitMarginCalculator";
+import QrCodeGenerator from "./QrCodeGenerator";
 import ReceiptGenerator from "./ReceiptGenerator";
+import VatCalculator from "./VatCalculator";
 import ToolsHome from "./ToolsHome";
 
 const renderPage = (page: React.ReactNode) =>
@@ -26,6 +29,9 @@ beforeAll(() => {
 beforeEach(() => window.sessionStorage.clear());
 
 const preview = () => screen.getByRole("article");
+
+/** Looked up each time: the panel is rebuilt whenever a field is briefly empty. */
+const results = () => within(screen.getByRole("article", { name: "Your results" }));
 
 describe("invoice generator", () => {
   it("shows a labelled sample until the visitor starts typing", async () => {
@@ -133,6 +139,77 @@ describe("receipt generator", () => {
 
     expect(within(preview()).getByText("₦25,000.00")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Compact" })).toHaveAttribute("aria-pressed", "true");
+  });
+});
+
+describe("profit margin calculator", () => {
+  it("shows an example, then the visitor's own margin and markup", async () => {
+    const user = userEvent.setup();
+    renderPage(<ProfitMarginCalculator />);
+
+    expect(screen.getByText(/An example/)).toBeInTheDocument();
+    await user.type(screen.getByLabelText("What it costs you"), "8,000");
+    await user.type(screen.getByLabelText("What you sell it for"), "10,000");
+
+    // 2,000 profit: 20% of the price, 25% of the cost.
+    expect(results().getAllByText("20%").length).toBeGreaterThan(0);
+    expect(results().getByText("25%")).toBeInTheDocument();
+    expect(results().getByText(/Margin or markup\?/)).toBeInTheDocument();
+
+    await user.clear(screen.getByLabelText("What it costs you"));
+    await user.type(screen.getByLabelText("What it costs you"), "12,000");
+    expect(results().getByText("You're losing")).toBeInTheDocument();
+  });
+});
+
+describe("VAT calculator", () => {
+  it("adds and removes VAT at the standard rate, with the source shown", async () => {
+    const user = userEvent.setup();
+    renderPage(<VatCalculator />);
+
+    expect(screen.getByLabelText("VAT rate (%)")).toHaveValue("7.5");
+    await user.type(screen.getByLabelText("Price before VAT"), "10,000");
+    expect(results().getAllByText("₦10,750.00").length).toBeGreaterThan(0);
+    expect(results().getByText(/Nigeria Tax Act 2025, section 147/)).toBeInTheDocument();
+    expect(results().getByText(/doesn't tell you what you owe/)).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Remove VAT" }));
+    // 10,000 ÷ 1.075, shown as the headline and in the breakdown.
+    expect(results().getAllByText("₦9,302.33")).toHaveLength(2);
+
+    await user.clear(screen.getByLabelText("VAT rate (%)"));
+    await user.type(screen.getByLabelText("VAT rate (%)"), "10");
+    expect(results().getByText(/the rate you entered/)).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /Use Nigeria's standard rate/ }));
+    expect(screen.getByLabelText("VAT rate (%)")).toHaveValue("7.5");
+  });
+});
+
+describe("QR code generator", () => {
+  it("makes a Wi-Fi code without ever saving the password", async () => {
+    const user = userEvent.setup();
+    renderPage(<QrCodeGenerator />);
+
+    expect(screen.getByRole("img", { name: /QR code\. Opens https:\/\/www\.duowork\.tech/ })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Wi-Fi" }));
+    await user.type(screen.getByLabelText("Network name"), "Shop Guest");
+    await user.type(screen.getByLabelText("Password"), "secret123");
+
+    expect(screen.getByRole("img", { name: /Joins the Wi-Fi network “Shop Guest”/ })).toBeInTheDocument();
+    const saved = window.sessionStorage.getItem("duowork-tools:qr:v1") ?? "";
+    expect(saved).toContain("Shop Guest");
+    expect(saved).not.toContain("secret123");
+  });
+
+  it("blocks a download until the details are valid", async () => {
+    const user = userEvent.setup();
+    renderPage(<QrCodeGenerator />);
+
+    await user.type(screen.getByLabelText("Web address"), "not a link");
+    await user.click(screen.getByRole("button", { name: /Download PNG/ }));
+    expect(await screen.findByText(/fixing before your code is ready/)).toBeInTheDocument();
+    expect(screen.getByLabelText("Web address")).toHaveAttribute("aria-invalid", "true");
   });
 });
 

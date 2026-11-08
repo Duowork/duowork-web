@@ -1,6 +1,7 @@
 import { Document, Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import type { ReceiptView } from "../receipt";
 import { FONT_FAMILY } from "./fonts";
+import PdfLockup from "./PdfLockup";
 
 /** Keep in step with components/tools/ReceiptPaper.tsx, its on-screen twin. */
 
@@ -16,7 +17,7 @@ const base = StyleSheet.create({
 });
 
 const standard = StyleSheet.create({
-  page: { padding: 48, fontFamily: FONT_FAMILY, fontSize: 9.5, lineHeight: 1.5, color: CARBON },
+  page: { padding: 48, paddingBottom: 64, fontFamily: FONT_FAMILY, fontSize: 9.5, lineHeight: 1.5, color: CARBON },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -46,6 +47,7 @@ const standard = StyleSheet.create({
     borderBottomColor: HAIRLINE,
   },
   section: { marginTop: 18 },
+  signature: { position: "absolute", right: 48, bottom: 26 },
 });
 
 const compact = StyleSheet.create({
@@ -111,6 +113,9 @@ function CompactReceipt({ view }: { view: ReceiptView }) {
       {view.notes !== "" && (
         <Text style={[base.muted, compact.centered, compact.section]}>{view.notes}</Text>
       )}
+      <View style={{ alignItems: "flex-end", marginTop: 12 }}>
+        <PdfLockup width={52} />
+      </View>
     </Page>
   );
 }
@@ -171,6 +176,10 @@ function StandardReceipt({ view }: { view: ReceiptView }) {
           <Text style={base.muted}>{view.notes}</Text>
         </View>
       )}
+
+      <View style={standard.signature} fixed>
+        <PdfLockup width={66} />
+      </View>
     </Page>
   );
 }

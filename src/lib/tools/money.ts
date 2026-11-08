@@ -75,3 +75,25 @@ export function formatScaled(scaled: number): string {
     scaled / 1000,
   );
 }
+
+/**
+ * numerator ÷ denominator as hundredths of a percent, rounded half away from
+ * zero, so 3500 of 6500 gives 5385 (53.85%). Null when the denominator is zero.
+ */
+export function ratioPercent(numerator: number, denominator: number): number | null {
+  if (denominator === 0) return null;
+
+  const scaled = BigInt(numerator) * 10000n;
+  const divisor = BigInt(denominator);
+  const negative = scaled < 0n !== divisor < 0n;
+  const top = scaled < 0n ? -scaled : scaled;
+  const bottom = divisor < 0n ? -divisor : divisor;
+  const rounded = (top * 2n + bottom) / (bottom * 2n);
+
+  return Number(negative ? -rounded : rounded);
+}
+
+/** 5385 becomes "53.85%". */
+export function formatPercent(hundredths: number): string {
+  return `${new Intl.NumberFormat("en-NG", { maximumFractionDigits: 2 }).format(hundredths / 100)}%`;
+}

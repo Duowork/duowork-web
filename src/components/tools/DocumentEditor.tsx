@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Copy, Hash, Printer } from "@phosphor-icons/react";
+import { Copy, DownloadSimple, Hash, Printer } from "@phosphor-icons/react";
 import { DRAFT_NOTICE } from "../../data/tools";
 import { useDraft } from "../../hooks/useDraft";
 import { useFieldErrors } from "../../hooks/useFieldErrors";
@@ -367,12 +367,16 @@ export default function DocumentEditor({ kind }: { kind: DocumentKind }) {
       }
       actions={
         <ToolActions
-          downloadLabel="Download PDF"
-          onDownload={async () => {
-            requireValid();
-            const { saveDocumentPdf } = await import("../../lib/tools/pdf/render");
-            const notice = await saveDocumentPdf(realView);
-            return `Your ${noun} is downloading. Check it over before you send it.${notice}`;
+          primary={{
+            label: "Download PDF",
+            icon: DownloadSimple,
+            busyLabel: "Preparing your PDF",
+            run: async () => {
+                requireValid();
+                const { saveDocumentPdf } = await import("../../lib/tools/pdf/render");
+                const notice = await saveDocumentPdf(realView);
+                return `Your ${noun} is downloading. Check it over before you send it.${notice}`;
+            },
           }}
           secondary={secondary}
           onClear={() => {

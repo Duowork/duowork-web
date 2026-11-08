@@ -59,16 +59,16 @@ function MarginSpecimen() {
 function TaxSpecimen() {
   return (
     <div className="mx-auto w-full max-w-[300px] py-2 text-white">
-      <p className="m-0 text-xs text-paper-70">Price with tax</p>
-      <p className="m-0 font-title text-[44px] leading-[1.1] font-semibold">₦11,000</p>
-      <div className="mt-4 grid gap-1.5 text-xs">
+      <p className="m-0 text-xs text-paper-70">Price with VAT</p>
+      <p className="m-0 font-title text-[44px] leading-[1.1] font-semibold">₦10,750</p>
+      <div className="mt-4 grid gap-1.5 font-title text-xs">
         <div className="flex justify-between border-b border-hairline-dark pb-1.5">
-          <span className="text-paper-70">Before tax</span>
-          <span className="font-title">₦10,000</span>
+          <span className="text-paper-70">Before VAT</span>
+          <span>₦10,000</span>
         </div>
         <div className="flex justify-between">
-          <span className="text-paper-70">Tax, at a 10% example rate</span>
-          <span className="font-title text-volt">₦1,000</span>
+          <span className="text-paper-70">VAT at Nigeria's 7.5%</span>
+          <span className="text-volt">₦750</span>
         </div>
       </div>
     </div>

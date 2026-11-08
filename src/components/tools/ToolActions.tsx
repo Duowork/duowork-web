@@ -1,6 +1,5 @@
 import { useState } from "react";
 import type { Icon } from "@phosphor-icons/react";
-import { DownloadSimple } from "@phosphor-icons/react";
 import Button from "../Button";
 import Spinner from "../Spinner";
 
@@ -12,17 +11,15 @@ export type ToolAction = {
 };
 
 type ToolActionsProps = {
-  /** The main export, named for what it produces. */
-  downloadLabel: string;
-  onDownload: () => Promise<string>;
+  /** The one obvious next step, named for what it produces. */
+  primary: ToolAction & { busyLabel?: string };
   secondary: ToolAction[];
   onClear: () => void;
 };
 
 /** The result row: one obvious next step, the alternatives, and a way to reset. */
 export default function ToolActions({
-  downloadLabel,
-  onDownload,
+  primary,
   secondary,
   onClear,
 }: ToolActionsProps) {
@@ -45,25 +42,31 @@ export default function ToolActions({
     }
   };
 
-  const download = async () => {
+  const runPrimary = async () => {
     setBusy(true);
     setStatus("");
-    await attempt(onDownload);
+    await attempt(primary.run);
     setBusy(false);
   };
+
+  const PrimaryIcon = primary.icon;
 
   return (
     <div>
       <div className="flex flex-wrap items-center gap-2.5">
         <Button
           variant="volt"
-          onClick={download}
+          onClick={runPrimary}
           disabled={busy}
           iconNode={
-            busy ? <Spinner isLoading size="sm" arcColor="#9eff51" /> : <DownloadSimple size={15} weight="bold" aria-hidden="true" />
+            busy ? (
+              <Spinner isLoading size="sm" arcColor="#9eff51" />
+            ) : (
+              <PrimaryIcon size={15} weight="bold" aria-hidden="true" />
+            )
           }
         >
-          {busy ? "Preparing your PDF" : downloadLabel}
+          {busy ? (primary.busyLabel ?? primary.label) : primary.label}
         </Button>
 
         {secondary.map(({ label, icon: ActionIcon, run }) => (

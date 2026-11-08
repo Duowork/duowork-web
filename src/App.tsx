@@ -17,6 +17,9 @@ const ToolsHome = lazy(() => import("./pages/tools/ToolsHome"));
 const InvoiceGenerator = lazy(() => import("./pages/tools/InvoiceGenerator"));
 const QuotationGenerator = lazy(() => import("./pages/tools/QuotationGenerator"));
 const ReceiptGenerator = lazy(() => import("./pages/tools/ReceiptGenerator"));
+const ProfitMarginCalculator = lazy(() => import("./pages/tools/ProfitMarginCalculator"));
+const VatCalculator = lazy(() => import("./pages/tools/VatCalculator"));
+const QrCodeGenerator = lazy(() => import("./pages/tools/QrCodeGenerator"));
 
 function RouteFallback() {
   return (
@@ -46,6 +49,9 @@ function App() {
             <Route path="/tools/invoice-generator" element={<InvoiceGenerator />} />
             <Route path="/tools/quotation-generator" element={<QuotationGenerator />} />
             <Route path="/tools/receipt-generator" element={<ReceiptGenerator />} />
+            <Route path="/tools/profit-margin-calculator" element={<ProfitMarginCalculator />} />
+            <Route path="/tools/vat-calculator" element={<VatCalculator />} />
+            <Route path="/tools/qr-code-generator" element={<QrCodeGenerator />} />
 
             {/* 1.0 paths. Kept so existing links and indexed URLs still land. */}
             <Route

@@ -4,8 +4,9 @@ import { Segmented } from "./fields";
 export type WorkbenchMode = "edit" | "preview";
 
 type WorkbenchProps = {
-  mode: WorkbenchMode;
-  onModeChange: (mode: WorkbenchMode) => void;
+  /** Leave both out for calculators, whose result shows beside or below the form. */
+  mode?: WorkbenchMode;
+  onModeChange?: (mode: WorkbenchMode) => void;
   form: React.ReactNode;
   actions: React.ReactNode;
   preview: React.ReactNode;
@@ -20,8 +21,8 @@ const MODES = [
 
 /**
  * Every generator's work area: a carbon desk with the form on one side and
- * white paper on the other. Below lg the two share the screen through a switch,
- * and print styles reduce the whole thing to the paper alone.
+ * white paper on the other. Below lg, document tools share the screen through a
+ * switch and calculators stack, and print reduces the whole thing to the paper.
  */
 export default function Workbench({
   mode,
@@ -31,6 +32,8 @@ export default function Workbench({
   preview,
   sampleNote,
 }: WorkbenchProps) {
+  const switchable = mode !== undefined && onModeChange !== undefined;
+
   return (
     <section
       id="workbench"
@@ -38,24 +41,26 @@ export default function Workbench({
       className="dw-print-reset bg-carbon py-[clamp(40px,6vw,80px)] text-white"
     >
       <Container className="dw-print-reset">
-        <div className="dw-no-print mb-6 lg:hidden">
-          <Segmented
-            label="Show"
-            value={mode}
-            onChange={onModeChange}
-            options={MODES}
-            className="w-full"
-          />
-        </div>
+        {switchable && (
+          <div className="dw-no-print mb-6 lg:hidden">
+            <Segmented
+              label="Show"
+              value={mode}
+              onChange={onModeChange}
+              options={MODES}
+              className="w-full"
+            />
+          </div>
+        )}
 
         <div className="dw-print-reset grid items-start gap-[clamp(32px,4vw,56px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
-          <div className={`dw-no-print min-w-0 ${mode === "edit" ? "" : "max-lg:hidden"}`}>
+          <div className={`dw-no-print min-w-0 ${mode === "preview" ? "max-lg:hidden" : ""}`}>
             {form}
           </div>
 
           <div
             className={`dw-print-reset min-w-0 lg:sticky lg:top-24 ${
-              mode === "preview" ? "" : "max-lg:hidden"
+              mode === "edit" ? "max-lg:hidden" : ""
             }`}
           >
             <div className="dw-no-print mb-5">{actions}</div>

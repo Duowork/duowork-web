@@ -60,6 +60,22 @@ describe("PDF rendering", () => {
     expect(pageCount(buffer)).toBeGreaterThan(1);
   });
 
+  it("prints the page number and document on every page", async () => {
+    const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
+    const buffer = await renderToBuffer(<DocumentPdf view={buildDocumentView(longDraft())} />);
+    const pdf = await getDocument({ data: new Uint8Array(buffer), verbosity: 0 }).promise;
+
+    expect(pdf.numPages).toBeGreaterThan(1);
+    for (let number = 1; number <= pdf.numPages; number += 1) {
+      const content = await (await pdf.getPage(number)).getTextContent();
+      const text = content.items
+        .map((item) => ("str" in item ? item.str : ""))
+        .join(" ")
+        .replace(/\s+/g, " ");
+      expect(text).toContain(`Invoice INV-0001 · Page ${number} of ${pdf.numPages}`);
+    }
+  });
+
   it("survives a very long description and an unbroken string", async () => {
     const draft = longDraft();
     draft.lines = [
@@ -127,5 +143,20 @@ describe("safe text", () => {
     expect(dropped).toEqual(["🙏", "你"]);
     expect(droppedNotice(dropped)).toMatch(/left them out/);
     expect(droppedNotice([])).toBe("");
+  });
+});
+
+describe("Duowork lockup", () => {
+  it("keeps the whole wordmark inside its frame", async () => {
+    const { LOCKUP } = await import("../lockup");
+    const [left, top, width, height] = LOCKUP.viewBox.split(" ").map(Number);
+    // Outline paths are absolute M/L/Q/C commands, so numbers pair up as x, y.
+    const numbers = LOCKUP.wordmark.match(/-?\d+(\.\d+)?/g)!.map(Number);
+    const xs = numbers.filter((_, index) => index % 2 === 0);
+    const ys = numbers.filter((_, index) => index % 2 === 1);
+    expect(Math.min(...xs)).toBeGreaterThanOrEqual(left);
+    expect(Math.max(...xs)).toBeLessThanOrEqual(left + width);
+    expect(Math.min(...ys)).toBeGreaterThanOrEqual(top);
+    expect(Math.max(...ys)).toBeLessThanOrEqual(top + height);
   });
 });

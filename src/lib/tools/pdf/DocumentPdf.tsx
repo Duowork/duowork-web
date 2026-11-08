@@ -1,6 +1,8 @@
+import type { ComponentProps } from "react";
 import { Document, Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import type { DocumentView, Row } from "../document";
 import { FONT_FAMILY } from "./fonts";
+import PdfLockup from "./PdfLockup";
 
 /** Keep in step with components/tools/DocumentPaper.tsx, its on-screen twin. */
 
@@ -12,15 +14,18 @@ const HAIRLINE = "#e4e4e4";
 const UNBREAKABLE_ROW_LIMIT = 600;
 
 const styles = StyleSheet.create({
+  // No lineHeight here, or on any View: on the page it stops react-pdf drawing
+  // the footer's page numbers at all, and inherited by a Text that doesn't set
+  // its own fontSize it comes out several times too tall. <Line> sets both.
   page: {
     paddingTop: 48,
     paddingHorizontal: 48,
     paddingBottom: 64,
     fontFamily: FONT_FAMILY,
     fontSize: 9.5,
-    lineHeight: 1.5,
     color: CARBON,
   },
+  line: { fontSize: 9.5, lineHeight: 1.5 },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -48,10 +53,8 @@ const styles = StyleSheet.create({
     paddingBottom: 6,
     borderBottomWidth: 0.75,
     borderBottomColor: CARBON,
-    fontSize: 8,
-    fontWeight: 500,
-    color: MUTED,
   },
+  headCell: { fontSize: 8, fontWeight: 500, color: MUTED },
   row: {
     flexDirection: "row",
     paddingVertical: 8,
@@ -84,19 +87,33 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 48,
     right: 48,
-    bottom: 28,
+    bottom: 26,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     fontSize: 8,
     color: MUTED,
   },
 });
 
+/** Text with the body size and line height; see styles.page for why. */
+function Line({
+  style,
+  ...props
+}: {
+  style?: ComponentProps<typeof View>["style"];
+  children?: React.ReactNode;
+  minPresenceAhead?: number;
+}) {
+  const extra = Array.isArray(style) ? style : style ? [style] : [];
+  return <Text {...props} style={[styles.line, ...extra]} />;
+}
+
 function MoneyRow({ row }: { row: Row }) {
   return (
     <View style={styles.totalRow}>
-      <Text style={styles.muted}>{row.label}</Text>
-      <Text>{row.value}</Text>
+      <Line style={styles.muted}>{row.label}</Line>
+      <Line>{row.value}</Line>
     </View>
   );
 }
@@ -117,33 +134,42 @@ export default function DocumentPdf({ view }: { view: DocumentView }) {
   return (
     <Document title={heading} author={view.from.name}>
       <Page size="A4" style={styles.page}>
+        <View style={styles.pageFooter} fixed>
+          <Text
+            render={({ pageNumber, totalPages }) =>
+              `${heading}  ·  Page ${pageNumber} of ${totalPages}`
+            }
+          />
+          <PdfLockup width={66} />
+        </View>
+
         <View style={styles.header}>
           <View style={styles.headerLeft}>
             {view.logo && <Image src={view.logo} style={styles.logo} />}
-            <Text style={styles.businessName}>{view.from.name}</Text>
+            <Line style={styles.businessName}>{view.from.name}</Line>
             {view.from.lines.map((line, index) => (
-              <Text key={index} style={styles.muted}>{line}</Text>
+              <Line key={index} style={styles.muted}>{line}</Line>
             ))}
           </View>
           <View>
-            <Text style={styles.title}>{view.title}</Text>
-            <Text style={styles.number}>{view.number}</Text>
+            <Line style={styles.title}>{view.title}</Line>
+            <Line style={styles.number}>{view.number}</Line>
           </View>
         </View>
 
         <View style={styles.parties}>
           <View style={styles.party}>
-            <Text style={styles.label}>{view.to.label}</Text>
-            <Text style={styles.partyName}>{view.to.name}</Text>
+            <Line style={styles.label}>{view.to.label}</Line>
+            <Line style={styles.partyName}>{view.to.name}</Line>
             {view.to.lines.map((line, index) => (
-              <Text key={index} style={styles.muted}>{line}</Text>
+              <Line key={index} style={styles.muted}>{line}</Line>
             ))}
           </View>
           <View style={{ width: 110 }}>
             {view.meta.map((row) => (
               <View key={row.label} style={styles.metaRow}>
-                <Text style={styles.label}>{row.label}</Text>
-                <Text style={styles.metaValue}>{row.value}</Text>
+                <Line style={styles.label}>{row.label}</Line>
+                <Line style={styles.metaValue}>{row.value}</Line>
               </View>
             ))}
           </View>
@@ -152,19 +178,19 @@ export default function DocumentPdf({ view }: { view: DocumentView }) {
         {view.project && (
           <View style={styles.project}>
             {view.project.title !== "" && (
-              <Text style={styles.projectTitle}>{view.project.title}</Text>
+              <Line style={styles.projectTitle}>{view.project.title}</Line>
             )}
             {view.project.description !== "" && (
-              <Text style={styles.muted}>{view.project.description}</Text>
+              <Line style={styles.muted}>{view.project.description}</Line>
             )}
           </View>
         )}
 
         <View style={styles.tableHead} minPresenceAhead={40}>
-          <Text style={styles.colDescription}>Description</Text>
-          <Text style={styles.colQty}>Qty</Text>
-          <Text style={[styles.colPrice, moneyWidth]}>Unit price</Text>
-          <Text style={[styles.colTotal, moneyWidth]}>Amount</Text>
+          <Line style={[styles.colDescription, styles.headCell]}>Description</Line>
+          <Line style={[styles.colQty, styles.headCell]}>Qty</Line>
+          <Line style={[styles.colPrice, moneyWidth, styles.headCell]}>Unit price</Line>
+          <Line style={[styles.colTotal, moneyWidth, styles.headCell]}>Amount</Line>
         </View>
 
         {view.lines.map((line) => (
@@ -173,10 +199,10 @@ export default function DocumentPdf({ view }: { view: DocumentView }) {
             style={styles.row}
             wrap={line.description.length > UNBREAKABLE_ROW_LIMIT}
           >
-            <Text style={styles.colDescription}>{line.description}</Text>
-            <Text style={styles.colQty}>{line.quantity}</Text>
-            <Text style={[styles.colPrice, moneyWidth]}>{line.unitPrice}</Text>
-            <Text style={[styles.colTotal, moneyWidth]}>{line.total}</Text>
+            <Line style={styles.colDescription}>{line.description}</Line>
+            <Line style={styles.colQty}>{line.quantity}</Line>
+            <Line style={[styles.colPrice, moneyWidth]}>{line.unitPrice}</Line>
+            <Line style={[styles.colTotal, moneyWidth]}>{line.total}</Line>
           </View>
         ))}
 
@@ -185,26 +211,19 @@ export default function DocumentPdf({ view }: { view: DocumentView }) {
             <MoneyRow key={row.label} row={row} />
           ))}
           <View style={styles.grand}>
-            <Text style={styles.grandLabel}>{view.grandTotal.label}</Text>
-            <Text style={styles.grandValue}>{view.grandTotal.value}</Text>
+            <Line style={styles.grandLabel}>{view.grandTotal.label}</Line>
+            <Line style={styles.grandValue}>{view.grandTotal.value}</Line>
           </View>
         </View>
 
         {view.blocks.map((block) => (
           <View key={block.heading} style={styles.block}>
-            <Text style={styles.blockHeading} minPresenceAhead={24}>{block.heading}</Text>
-            <Text style={styles.muted}>{block.body}</Text>
+            <Line style={styles.blockHeading} minPresenceAhead={24}>{block.heading}</Line>
+            <Line style={styles.muted}>{block.body}</Line>
           </View>
         ))}
 
-        {view.footnote && <Text style={styles.footnote}>{view.footnote}</Text>}
-
-        <View style={styles.pageFooter} fixed>
-          <Text>{heading}</Text>
-          <Text
-            render={({ pageNumber, totalPages }) => `Page ${pageNumber} of ${totalPages}`}
-          />
-        </View>
+        {view.footnote && <Line style={styles.footnote}>{view.footnote}</Line>}
       </Page>
     </Document>
   );

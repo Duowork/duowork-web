@@ -182,11 +182,29 @@ directory only once its `live` flag is true and its route exists in `App.tsx`.
   so `NotoSansNigerian-*.ttf` (a subset of Noto Sans) supplies them per letter.
   `pdf/safe-text.ts` removes anything the fonts can't draw and the page tells the
   visitor; a test checks that list against the font files.
+- **Every output is signed** with the Duowork lockup, bottom right: the white
+  panels on screen and in print (`DuoworkLockup`) and the PDFs (`PdfLockup`,
+  in the footer of every page). Both draw from `lib/tools/lockup.ts`, where the
+  wordmark is already converted to outlines, so no font is needed. The same logo
+  is `public/duowork-lockup-horizontal-on-light.svg`. QR image downloads aren't signed.
+- **react-pdf line height is fragile.** Never set `lineHeight` on a `Page` or a
+  `View`. On a page it silently stops `render`-prop text (the page numbers) from
+  drawing, and when a Text inherits it without its own `fontSize` it comes out
+  several times too tall. Set both on the Text itself, as `<Line>` does in
+  `DocumentPdf`. A test reads each page of a long invoice for its footer.
 - **Static pages.** `scripts/static-tool-routes.ts` writes a real HTML file for
   each live tool at build time, so direct visits return 200 with the tool's own
   metadata rather than going through `404.html`.
 - **Tax and payroll figures are never assumed.** Rates are entered by the user.
   Verify any preset against official guidance first, and show its effective date.
+  The one preset so far, VAT at 7.5%, is `NIGERIA_VAT` in `data/tool-notes.ts`,
+  with its source in the comment above it.
+- **Two kinds of work area.** Generators pass `mode` to `Workbench` and get an
+  Edit/Preview switch on phones; calculators leave it out and stack instead.
+  `ToolActions` takes one `primary` action plus `secondary` ones.
+- **QR codes** must stay UTF-8: `lib/tools/qr.ts` overrides the library's
+  byte encoding, which would otherwise corrupt ₦. Tests decode every code type
+  with `jsqr`. Colour options stay dark on light with a contrast of at least 7:1.
 
 ## Privacy and Terms
 

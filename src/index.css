@@ -412,7 +412,8 @@
   }
 
   /* Browsers drop backgrounds by default, which would leave white on white. */
-  .dw-paper-total {
+  .dw-paper-total,
+  .dw-print-exact {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

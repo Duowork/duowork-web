@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Copy, Printer, WhatsappLogo } from "@phosphor-icons/react";
+import { Copy, DownloadSimple, Printer, WhatsappLogo } from "@phosphor-icons/react";
 import { DRAFT_NOTICE } from "../../data/tools";
 import { useDraft } from "../../hooks/useDraft";
 import { useFieldErrors } from "../../hooks/useFieldErrors";
@@ -220,12 +220,16 @@ export default function ReceiptEditor() {
             className="w-fit"
           />
           <ToolActions
-            downloadLabel="Download PDF"
-            onDownload={async () => {
-              requireValid();
-              const { saveReceiptPdf } = await import("../../lib/tools/pdf/render");
-              const notice = await saveReceiptPdf(realView);
-              return `Your receipt is downloading.${notice}`;
+            primary={{
+              label: "Download PDF",
+              icon: DownloadSimple,
+              busyLabel: "Preparing your PDF",
+              run: async () => {
+                requireValid();
+                const { saveReceiptPdf } = await import("../../lib/tools/pdf/render");
+                const notice = await saveReceiptPdf(realView);
+                return `Your receipt is downloading.${notice}`;
+              },
             }}
             secondary={[
               {
